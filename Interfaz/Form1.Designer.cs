@@ -32,8 +32,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.añadirDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.añadirTiempoYDistanciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.iniciarSimulaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,25 +45,35 @@
             this.opcionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1132, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // opcionesToolStripMenuItem
             // 
+            this.opcionesToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.añadirDatosToolStripMenuItem,
-            this.añadirTiempoYDistanciaToolStripMenuItem});
+            this.añadirTiempoYDistanciaToolStripMenuItem,
+            this.iniciarSimulaciónToolStripMenuItem});
+            this.opcionesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
             // añadirDatosToolStripMenuItem
             // 
             this.añadirDatosToolStripMenuItem.Name = "añadirDatosToolStripMenuItem";
-            this.añadirDatosToolStripMenuItem.Size = new System.Drawing.Size(267, 26);
+            this.añadirDatosToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
             this.añadirDatosToolStripMenuItem.Text = "Añadir Datos de Planes";
             this.añadirDatosToolStripMenuItem.Click += new System.EventHandler(this.añadirDatosToolStripMenuItem_Click);
+            // 
+            // añadirTiempoYDistanciaToolStripMenuItem
+            // 
+            this.añadirTiempoYDistanciaToolStripMenuItem.Name = "añadirTiempoYDistanciaToolStripMenuItem";
+            this.añadirTiempoYDistanciaToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.añadirTiempoYDistanciaToolStripMenuItem.Text = "Añadir Tiempo y Distancia";
+            this.añadirTiempoYDistanciaToolStripMenuItem.Click += new System.EventHandler(this.añadirTiempoYDistanciaToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -70,18 +81,18 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // añadirTiempoYDistanciaToolStripMenuItem
+            // iniciarSimulaciónToolStripMenuItem
             // 
-            this.añadirTiempoYDistanciaToolStripMenuItem.Name = "añadirTiempoYDistanciaToolStripMenuItem";
-            this.añadirTiempoYDistanciaToolStripMenuItem.Size = new System.Drawing.Size(267, 26);
-            this.añadirTiempoYDistanciaToolStripMenuItem.Text = "Añadir Tiempo y Distancia";
-            this.añadirTiempoYDistanciaToolStripMenuItem.Click += new System.EventHandler(this.añadirTiempoYDistanciaToolStripMenuItem_Click);
+            this.iniciarSimulaciónToolStripMenuItem.Name = "iniciarSimulaciónToolStripMenuItem";
+            this.iniciarSimulaciónToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.iniciarSimulaciónToolStripMenuItem.Text = "Iniciar Simulación";
+            this.iniciarSimulaciónToolStripMenuItem.Click += new System.EventHandler(this.iniciarSimulaciónToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1132, 703);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -100,6 +111,7 @@
         private System.Windows.Forms.ToolStripMenuItem añadirDatosToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem añadirTiempoYDistanciaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iniciarSimulaciónToolStripMenuItem;
     }
 }
 

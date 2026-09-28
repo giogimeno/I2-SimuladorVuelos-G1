@@ -39,5 +39,12 @@ namespace Interfaz
             tiempo = form.DameTiempo();
 
         }
+
+        private void iniciarSimulaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Simulador form = new Simulador();
+            form.ShowDialog();
+
+        }
     }
 }
