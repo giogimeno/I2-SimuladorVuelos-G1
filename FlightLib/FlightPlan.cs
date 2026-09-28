@@ -11,20 +11,22 @@ namespace FlightLib
         // Atributos
 
         string id; // identificador
+        Position initialPosition; // posicion inicial
         Position currentPosition; // posicion actual
         Position finalPosition; // posicion final
         double velocidad;
 
-        // Constructures
+        // Constructor
         public FlightPlan(string id, double cpx, double cpy, double fpx, double fpy, double velocidad)
         {
             this.id = id;
+            this.initialPosition = new Position(cpx, cpy);
             this.currentPosition = new Position(cpx, cpy);
             this.finalPosition = new Position(fpx, fpy);
             this.velocidad = velocidad;
         }
 
-        // Metodos (SETTERS AND GETTERS)
+        // Sets & Gets
         public Position GetActualPosition()
         { return this.currentPosition; }
 
@@ -59,7 +61,7 @@ namespace FlightLib
             currentPosition = new Position(x, y);
         }
 
-        public bool DidFlightArrive()
+        public bool HasArrived()
         {
             double thereshold = 10;
             double distancia = this.GetActualPosition().Distancia(this.GetFinalPosition());
@@ -75,26 +77,6 @@ namespace FlightLib
             }
         }
 
-        public void BucleSimulacionHastaCiclos (int ciclos)
-        {
-            this.Mover(ciclos);
-            this.EscribeConsola();
-            Console.WriteLine("Se ha movido el vuelo durante {0} ciclos", ciclos);
-        }
-
-        public void BucleSimulacionHastaFinal (int ciclos)
-        {
-            bool final = false;
-            int contador = 0;
-            while (contador < ciclos && final == false)
-            {
-                this.Mover(1);
-                contador += 1;
-                final = this.DidFlightArrive();
-            }
-            Console.WriteLine("Se ha movido el vuelo durante {0} ciclos", contador);
-        }
-
         public void EscribeConsola()
         // escribe en consola los datos del plan de vuelo
         {
@@ -106,10 +88,14 @@ namespace FlightLib
             Console.WriteLine("******************************");
         }
 
-        public bool HayColisionConElVuelo(FlightPlan secundario, double distancia_minima)
+        public double Distancia(FlightPlan secundario)
         {
             double distancia = this.GetActualPosition().Distancia(secundario.GetActualPosition());
-            if (distancia < distancia_minima)
+            return distancia;
+        }
+        public bool HayColisionConElVuelo(FlightPlan secundario, double distancia_minima)
+        {
+            if (this.Distancia(secundario) < distancia_minima)
             {
                 Console.WriteLine("Hay colisión entre los vuelos {0} y {1}", this.GetId(), secundario.GetId());
                 return true;
@@ -120,5 +106,10 @@ namespace FlightLib
                 return false;
             }
         }
+
+
+
+        public void Restart()
+        { this.currentPosition = this.initialPosition; }
     }
 }
