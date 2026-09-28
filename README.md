@@ -12,7 +12,7 @@ Claudia Allende
 
 Joan Gimeno
 
-Sara Sacristán
+Sara Sacristan
 
 Jacob Torres
 
