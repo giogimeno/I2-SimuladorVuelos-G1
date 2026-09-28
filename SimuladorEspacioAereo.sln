@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32819.101
+# Visual Studio Version 18
+VisualStudioVersion = 18.10.12217.157 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightLib", "FlightLib\FlightLib.csproj", "{3B53FCD9-7A68-42EF-A9DA-B0628F94A07E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulatorConsole", "SimulatorConsole\SimulatorConsole.csproj", "{3A87A27D-F5E9-4F8E-B229-683005A87FF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola", "SimulatorConsole\Consola.csproj", "{3A87A27D-F5E9-4F8E-B229-683005A87FF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

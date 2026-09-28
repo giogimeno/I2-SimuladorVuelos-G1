@@ -20,9 +20,7 @@ namespace FlightLib
                 return 0;
             }
             else
-            {
-                return -1;
-            }
+            { return -1; }
         }
         public FlightPlan GetFlightPlan(int i)
         {
