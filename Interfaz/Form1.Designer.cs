@@ -33,8 +33,8 @@
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.añadirDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.añadirTiempoYDistanciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.iniciarSimulaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,18 +75,18 @@
             this.añadirTiempoYDistanciaToolStripMenuItem.Text = "Añadir Tiempo y Distancia";
             this.añadirTiempoYDistanciaToolStripMenuItem.Click += new System.EventHandler(this.añadirTiempoYDistanciaToolStripMenuItem_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // iniciarSimulaciónToolStripMenuItem
             // 
             this.iniciarSimulaciónToolStripMenuItem.Name = "iniciarSimulaciónToolStripMenuItem";
             this.iniciarSimulaciónToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
             this.iniciarSimulaciónToolStripMenuItem.Text = "Iniciar Simulación";
             this.iniciarSimulaciónToolStripMenuItem.Click += new System.EventHandler(this.iniciarSimulaciónToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.mover = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelSimulador = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.panelSimulador)).BeginInit();
             this.SuspendLayout();
             // 
             // mover
@@ -42,17 +42,18 @@
             this.mover.TabIndex = 5;
             this.mover.Text = "MOVER";
             this.mover.UseVisualStyleBackColor = true;
+            this.mover.Click += new System.EventHandler(this.mover_Click);
             // 
-            // dataGridView1
+            // panelSimulador
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 61);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1050, 700);
-            this.dataGridView1.TabIndex = 4;
+            this.panelSimulador.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panelSimulador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.panelSimulador.Location = new System.Drawing.Point(12, 61);
+            this.panelSimulador.Name = "panelSimulador";
+            this.panelSimulador.RowHeadersWidth = 51;
+            this.panelSimulador.RowTemplate.Height = 24;
+            this.panelSimulador.Size = new System.Drawing.Size(1050, 700);
+            this.panelSimulador.TabIndex = 4;
             // 
             // Simulador
             // 
@@ -60,10 +61,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 789);
             this.Controls.Add(this.mover);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panelSimulador);
             this.Name = "Simulador";
             this.Text = "Simulador";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Simulador_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.panelSimulador)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -71,6 +73,6 @@
         #endregion
 
         private System.Windows.Forms.Button mover;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView panelSimulador;
     }
 }

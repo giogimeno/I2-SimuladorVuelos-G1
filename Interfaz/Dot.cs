@@ -11,32 +11,39 @@ namespace Interfaz
 {
     public class Dot
     {
-        int x;
-        int y;
-        int size;
+        PictureBox newpic;
 
         public Dot(Position pos, int size)
         {
             double posx = pos.GetX();
-            int posx_rec = Convert.ToInt32(posx);
-            double posy = pos.GetX();
-            int posy_rec = Convert.ToInt32(posy);
+            int x = Convert.ToInt32(posx);
+            double posy = pos.GetY();
+            int y = Convert.ToInt32(posy);
 
-            this.x = posx_rec;
-            this.y = posy_rec;
-            this.size = size;
-
-            PictureBox newpic = new PictureBox();
-
+            newpic = new PictureBox();
             newpic.Size = new Size(size, size);
             newpic.BackColor = Color.Red;
-            newpic.Location = new Point(this.x, this.y);            
+            newpic.Location = new Point(x, y);            
         }
 
-        public void SetPosition(int x, int y)
-        { this.x = x; this.y = y; }
+        public void SetPosition(Position pos)
+        {
+            double posx = pos.GetX();
+            int x = Convert.ToInt32(posx);
+            double posy = pos.GetY();
+            int y = Convert.ToInt32(posy);
+
+            newpic.Location = new Point(x, y);
+        }
 
         public void SetSize(int size)
-        { this.size = size; }
+        {
+            newpic.Size = new Size(size, size);
+        }
+
+        public PictureBox GetDot()
+        {
+            return newpic;
+        }
     }
 }

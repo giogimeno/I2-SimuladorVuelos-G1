@@ -9,17 +9,23 @@ namespace Interfaz
 {
     internal class DotList
     {
-        Dot[] listapuntos = new Dot[1000];
+        Dot[] listaPuntos = new Dot[1000];
         int num = 0;
 
         public void AddDot(Dot dot)
-        { this.listapuntos[this.num] = dot; this.num++; }
+        {
+            this.listaPuntos[this.num] = dot; this.num++; 
+        }
 
         public Dot GetDot(int i)
-        { return this.listapuntos[i]; }
+        {
+            return this.listaPuntos[i]; 
+        }
 
         public int GetNum()
-        { return this.num; }
+        { 
+            return this.num; 
+        }
 
     }
 }

@@ -43,8 +43,14 @@ namespace Interfaz
         private void iniciarSimulaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Simulador form = new Simulador();
+            form.DarDistancia(distancia);
+            form.DarTiempo(tiempo);
+            form.DarPlanes(listaPlanes);
             form.ShowDialog();
+            
 
         }
+
+
     }
 }

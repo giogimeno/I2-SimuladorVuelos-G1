@@ -33,6 +33,11 @@ namespace FlightLib
                 return vector[i];
             }
         }
+
+        public int GetNum()
+        {
+            return number;
+        }
         public void Mover(double tiempo)
         {
             int i = 0;
