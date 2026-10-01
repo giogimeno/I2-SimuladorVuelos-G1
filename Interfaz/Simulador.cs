@@ -51,6 +51,8 @@ namespace Interfaz
                 panelSimulador.Controls.Add(dot.GetDot());
                 i++;
             }
+
+            
         }
 
         private void mover_Click(object sender, EventArgs e)
@@ -62,9 +64,28 @@ namespace Interfaz
                 listaPlanes.GetFlightPlan(i).Mover(tiempo);
                 Position newPos = listaPlanes.GetFlightPlan(i).GetActualPosition();
                 listaPuntos.GetDot(i).SetPosition(newPos);
+                panelSimulador.Invalidate();
                 i++;
             }
 
+        }
+
+        private void panelSimulador_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Pen myPen = new Pen(Color.Red);
+
+            int i = 0;
+            while (i < listaPlanes.GetNum())
+            {
+                g.DrawLine(myPen, Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetActualPosition().GetX()),
+                                  Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetActualPosition().GetY()),
+                                  Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetFinalPosition().GetX()),
+                                  Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetFinalPosition().GetY()));
+
+
+                i++;
+            }
         }
     }
 }
