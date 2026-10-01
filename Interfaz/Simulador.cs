@@ -51,6 +51,8 @@ namespace Interfaz
                 panelSimulador.Controls.Add(dot.GetDot());
                 i++;
             }
+
+            
         }
 
         private void mover_Click(object sender, EventArgs e)
@@ -62,6 +64,7 @@ namespace Interfaz
                 listaPlanes.GetFlightPlan(i).Mover(tiempo);
                 Position newPos = listaPlanes.GetFlightPlan(i).GetActualPosition();
                 listaPuntos.GetDot(i).SetPosition(newPos);
+                panelSimulador.Invalidate();
                 i++;
             }
 

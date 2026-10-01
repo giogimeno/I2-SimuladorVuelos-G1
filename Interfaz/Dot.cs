@@ -23,7 +23,7 @@ namespace Interfaz
             newpic = new PictureBox();
             newpic.Size = new Size(size, size);
             newpic.BackColor = Color.Red;
-            newpic.Location = new Point(x, y);            
+            newpic.Location = new Point(x, y);
         }
 
         public void SetPosition(Position pos)
