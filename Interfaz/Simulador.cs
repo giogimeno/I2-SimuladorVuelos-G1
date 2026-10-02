@@ -57,16 +57,6 @@ namespace Interfaz
 
         private void mover_Click(object sender, EventArgs e)
         {
-            int i = 0;
-
-            while (i < listaPlanes.GetNum())
-            {
-                listaPlanes.GetFlightPlan(i).Mover(tiempo);
-                Position newPos = listaPlanes.GetFlightPlan(i).GetActualPosition();
-                listaPuntos.GetDot(i).SetPosition(newPos);
-                panelSimulador.Invalidate();
-                i++;
-            }
 
         }
 
