@@ -51,15 +51,19 @@ namespace Interfaz
                 panelSimulador.Controls.Add(dot.GetDot());
                 i++;
             }
-
-            
         }
 
         private void mover_Click(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < listaPlanes.GetNum(); i++)
+            {
+                listaPlanes.GetFlightPlan(i).Mover(tiempo);
+                Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
+                listaPuntos.GetDot(i).SetPosition(pos);
+            }
+            panelSimulador.Invalidate();
         }
-
+        
         private void panelSimulador_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;

@@ -107,8 +107,6 @@ namespace FlightLib
             }
         }
 
-
-
         public void Restart()
         { this.currentPosition = this.initialPosition; }
     }
