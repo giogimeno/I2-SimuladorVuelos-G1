@@ -13,7 +13,7 @@ namespace Interfaz
     {
         PictureBox newpic;
 
-        public Dot(Position pos, int size)
+        public Dot(Position pos, int size, FlightPlan planvuelo)  //el dot también tiene que recibir el flightplan del avión que representa
         {
             double posx = pos.GetX();
             int x = Convert.ToInt32(posx);
@@ -24,6 +24,12 @@ namespace Interfaz
             newpic.Size = new Size(size, size);
             newpic.BackColor = Color.Red;
             newpic.Location = new Point(x, y);
+
+            newpic.Click += (sender, e) =>
+            {
+                InformacionAviones form = new InformacionAviones(planvuelo);
+                form.ShowDialog();
+            };
         }
 
         public void SetPosition(Position pos)

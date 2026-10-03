@@ -45,10 +45,15 @@ namespace Interfaz
             
             while (i < listaPlanes.GetNum())
             {
-                Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
-                Dot dot = new Dot(pos, 10);
+                
+                FlightPlan plan = listaPlanes.GetFlightPlan(i);  //guarda el flight plan correspondiente a ese punto en concreto
+                Position pos = plan.GetActualPosition();
+
+                Dot dot = new Dot(pos, 10, plan);
+
                 listaPuntos.AddDot(dot);
                 panelSimulador.Controls.Add(dot.GetDot());
+
                 i++;
             }
         }
