@@ -33,7 +33,7 @@ namespace Interfaz
 
                 FlightPlan plan1 = new FlightPlan(id, x1, y1, x2, y2, v);
 
-                id = plan1Id.Text;
+                id = plan2Id.Text;
                 x1 = Convert.ToDouble(plan2XInicio.Text);
                 y1 = Convert.ToDouble(plan2YInicio.Text);
                 x2 = Convert.ToDouble(plan2XFinal.Text);
