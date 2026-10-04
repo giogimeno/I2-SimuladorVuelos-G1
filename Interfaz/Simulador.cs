@@ -1,13 +1,14 @@
-﻿using System;
+﻿using FlightLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FlightLib;
 
 namespace Interfaz
 {
@@ -72,19 +73,34 @@ namespace Interfaz
         private void panelSimulador_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            Pen myPen = new Pen(Color.Red);
+            Pen PenLinea = new Pen(Color.Red);
+            Pen PenCirculo = new Pen(Color.Yellow);
+
+            double distancia_total = distancia; 
+            int diametro = Convert.ToInt32(distancia_total / 2);
 
             int i = 0;
             while (i < listaPlanes.GetNum())
             {
-                g.DrawLine(myPen, Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetActualPosition().GetX()),
+                int XEsquina = Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetActualPosition().GetX());
+                int YEsquina = Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetActualPosition().GetY());
+
+                int x_centro = XEsquina - diametro / 2;    // Ajustar la posición para centrar el punto
+                int y_centro = YEsquina - diametro / 2;
+
+                g.DrawLine(PenLinea, Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetActualPosition().GetX()),
                                   Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetActualPosition().GetY()),
                                   Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetFinalPosition().GetX()),
                                   Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetFinalPosition().GetY()));
 
-
+                g.DrawEllipse(PenCirculo, x_centro, y_centro, diametro, diametro);
                 i++;
             }
+        }
+
+        private void panelSimulador_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

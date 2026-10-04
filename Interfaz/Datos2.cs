@@ -32,11 +32,7 @@ namespace Interfaz
             {
                 MessageBox.Show("Error en el formato de los datos");
             }
-            
-
             Close();
-
-
         }
 
         public double DameDistancia()
@@ -47,6 +43,11 @@ namespace Interfaz
         public double DameTiempo()
         {
             return tiempo;
+        }
+
+        private void Datos2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

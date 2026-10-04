@@ -20,6 +20,8 @@ namespace Interfaz
         public Form1()
         {
             InitializeComponent();
+            listaPlanes.AddFlightPlan(new FlightPlan("A1", 100, 100, 200, 200, 20));
+            listaPlanes.AddFlightPlan(new FlightPlan("A2", 150, 150, 250, 250, 30)); // EVADIR 1rForm (Depuracion)
         }
 
         private void añadirDatosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -37,7 +39,6 @@ namespace Interfaz
             form.ShowDialog();
             distancia = form.DameDistancia();
             tiempo = form.DameTiempo();
-
         }
 
         private void iniciarSimulaciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -51,6 +52,9 @@ namespace Interfaz
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

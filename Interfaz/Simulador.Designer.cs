@@ -54,6 +54,7 @@
             this.panelSimulador.RowTemplate.Height = 24;
             this.panelSimulador.Size = new System.Drawing.Size(1050, 700);
             this.panelSimulador.TabIndex = 4;
+            this.panelSimulador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.panelSimulador_CellContentClick);
             this.panelSimulador.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSimulador_Paint);
             // 
             // Simulador
