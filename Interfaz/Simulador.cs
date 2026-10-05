@@ -118,7 +118,7 @@ namespace Interfaz
             if (moverParar == 0)
             {
                 timer1.Start();
-                auto.Text = "PARAR";
+                auto.Text = "■";
                 auto.BackColor = Color.Red;
                 moverParar = 1;
             }
@@ -126,7 +126,7 @@ namespace Interfaz
             else if (moverParar == 1)
             {
                 timer1.Stop();
-                auto.Text = "AUTO";
+                auto.Text = "▶ AUTO";
                 auto.BackColor = Color.Green;
                 moverParar = 0;
             }

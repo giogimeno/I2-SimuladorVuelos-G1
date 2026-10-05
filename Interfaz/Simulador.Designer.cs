@@ -68,7 +68,7 @@
             this.auto.Name = "auto";
             this.auto.Size = new System.Drawing.Size(111, 33);
             this.auto.TabIndex = 6;
-            this.auto.Text = "AUTO";
+            this.auto.Text = "▶ AUTO";
             this.auto.UseVisualStyleBackColor = false;
             this.auto.Click += new System.EventHandler(this.auto_Click);
             // 
