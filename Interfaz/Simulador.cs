@@ -18,6 +18,7 @@ namespace Interfaz
         DotList listaPuntos = new DotList();
         double tiempo;
         double distancia;
+        int moverParar = 0;
 
         
         public Simulador()
@@ -98,8 +99,37 @@ namespace Interfaz
             }
         }
 
-        private void panelSimulador_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
+            for (int i = 0; i < listaPlanes.GetNum(); i++)
+            {
+                listaPlanes.GetFlightPlan(i).Mover(tiempo);
+                Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
+                listaPuntos.GetDot(i).SetPosition(pos);
+            }
+            panelSimulador.Invalidate();
+
+        }
+
+        private void auto_Click(object sender, EventArgs e)
+        {
+            timer1.Interval = 500;
+
+            if (moverParar == 0)
+            {
+                timer1.Start();
+                auto.Text = "PARAR";
+                auto.BackColor = Color.Red;
+                moverParar = 1;
+            }
+            
+            else if (moverParar == 1)
+            {
+                timer1.Stop();
+                auto.Text = "AUTO";
+                auto.BackColor = Color.Green;
+                moverParar = 0;
+            }
 
         }
     }

@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mover = new System.Windows.Forms.Button();
             this.panelSimulador = new System.Windows.Forms.DataGridView();
+            this.auto = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelSimulador)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,14 +57,31 @@
             this.panelSimulador.RowTemplate.Height = 24;
             this.panelSimulador.Size = new System.Drawing.Size(1050, 700);
             this.panelSimulador.TabIndex = 4;
-            this.panelSimulador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.panelSimulador_CellContentClick);
             this.panelSimulador.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSimulador_Paint);
+            // 
+            // auto
+            // 
+            this.auto.BackColor = System.Drawing.Color.Green;
+            this.auto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.auto.ForeColor = System.Drawing.SystemColors.Control;
+            this.auto.Location = new System.Drawing.Point(574, 22);
+            this.auto.Name = "auto";
+            this.auto.Size = new System.Drawing.Size(111, 33);
+            this.auto.TabIndex = 6;
+            this.auto.Text = "AUTO";
+            this.auto.UseVisualStyleBackColor = false;
+            this.auto.Click += new System.EventHandler(this.auto_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Simulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 789);
+            this.Controls.Add(this.auto);
             this.Controls.Add(this.mover);
             this.Controls.Add(this.panelSimulador);
             this.Name = "Simulador";
@@ -76,5 +96,7 @@
 
         private System.Windows.Forms.Button mover;
         private System.Windows.Forms.DataGridView panelSimulador;
+        private System.Windows.Forms.Button auto;
+        private System.Windows.Forms.Timer timer1;
     }
 }
