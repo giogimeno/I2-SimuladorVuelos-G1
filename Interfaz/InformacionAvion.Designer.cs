@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class InformacionAviones
+    partial class InformacionAvion
     {
         /// <summary>
         /// Required designer variable.

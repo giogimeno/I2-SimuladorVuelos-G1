@@ -132,5 +132,11 @@ namespace Interfaz
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InformaciónDosVuelos form = new InformaciónDosVuelos(listaPlanes);
+            form.ShowDialog();
+        }
     }
 }

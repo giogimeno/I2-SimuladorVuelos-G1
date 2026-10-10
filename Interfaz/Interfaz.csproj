@@ -66,11 +66,23 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="InformacionAviones.cs">
+    <Compile Include="InformacionAvion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InformacionAviones.Designer.cs">
-      <DependentUpon>InformacionAviones.cs</DependentUpon>
+    <Compile Include="InformacionAvion.Designer.cs">
+      <DependentUpon>InformacionAvion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InformaciónDosVuelos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformaciónDosVuelos.Designer.cs">
+      <DependentUpon>InformaciónDosVuelos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MostrarDistancia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MostrarDistancia.Designer.cs">
+      <DependentUpon>MostrarDistancia.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,8 +101,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InformacionAviones.resx">
-      <DependentUpon>InformacionAviones.cs</DependentUpon>
+    <EmbeddedResource Include="InformacionAvion.resx">
+      <DependentUpon>InformacionAvion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformaciónDosVuelos.resx">
+      <DependentUpon>InformaciónDosVuelos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MostrarDistancia.resx">
+      <DependentUpon>MostrarDistancia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

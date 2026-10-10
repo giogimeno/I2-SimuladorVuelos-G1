@@ -33,7 +33,7 @@ namespace Interfaz
 
             newpic.Click += (sender, e) =>
             {
-                InformacionAviones form = new InformacionAviones(planvuelo);
+                InformacionAvion form = new InformacionAvion(planvuelo);
                 form.ShowDialog();
             };
         }

@@ -11,10 +11,10 @@ using FlightLib;
 
 namespace Interfaz
 {
-    public partial class InformacionAviones : Form
+    public partial class InformacionAvion : Form
     {
         FlightPlan planvuelo;  //creamos un flightplan que recibirá el constructor
-        public InformacionAviones(FlightPlan planvuelo) //recibimos un flightplan
+        public InformacionAvion(FlightPlan planvuelo) //recibimos un flightplan
         {
             InitializeComponent();
 
