@@ -22,6 +22,8 @@ namespace Interfaz
             InitializeComponent();
             listaPlanes.AddFlightPlan(new FlightPlan("A1", 100, 100, 200, 200, 20));
             listaPlanes.AddFlightPlan(new FlightPlan("A2", 150, 150, 250, 250, 30)); // EVADIR 1rForm (Depuracion)
+            distancia = 200;
+            tiempo = 10;
         }
 
         private void añadirDatosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -29,8 +31,6 @@ namespace Interfaz
             Datos form = new Datos();
             form.ShowDialog();
             listaPlanes = form.DamePlanes();
-
-
         }
 
         private void añadirTiempoYDistanciaToolStripMenuItem_Click(object sender, EventArgs e)

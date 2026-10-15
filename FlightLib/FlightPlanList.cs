@@ -68,7 +68,6 @@ namespace FlightLib
                     {
                         return true;
                     }
-                    else { return false; }
                     j++;
                 }
                 i++;
