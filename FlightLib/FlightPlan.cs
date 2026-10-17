@@ -40,7 +40,6 @@ namespace FlightLib
         { return this.velocidad; }
 
         public void SetVelocidad(double velocidad)
-        // setter del atributo velocidad
         { this.velocidad = velocidad; }
 
         public void Mover(double tiempo)
@@ -109,5 +108,41 @@ namespace FlightLib
 
         public void Restart()
         { this.currentPosition = this.initialPosition; }
+
+        public double GetTiempoHastaDestino()
+        {
+            double distanciaRestante = this.GetActualPosition().Distancia(this.GetFinalPosition());
+            if (velocidad <= 0)
+            {
+                return 0;
+            }
+            return distanciaRestante / velocidad * 60; // tiempo en minutos
+        }
+
+        public Position GetPosicionFutura(double minutos)
+        {
+            Position actual = this.GetActualPosition();
+            Position destion = this.GetFinalPosition();
+            double distanciaRestante = actual.Distancia(destion);
+
+            if (distanciaRestante == 0 || velocidad <= 0)
+            {
+                return new Position(destion.GetX(), destion.GetY());
+            }
+
+            double distanciaRecorrida = velocidad * minutos / 60;
+
+            if (distanciaRecorrida >= distanciaRestante)
+            {
+                return new Position(destion.GetX(), destion.GetY());
+            }
+
+            double proporcion = distanciaRecorrida / distanciaRestante;
+
+            double x = actual.GetX() + (destion.GetX() - actual.GetX()) * proporcion;
+            double y = actual.GetY() + (destion.GetY() - actual.GetY()) * proporcion;
+
+            return new Position(x, y);
+        }
     }
 }

@@ -22,22 +22,18 @@ namespace FlightLib
             else
             { return -1; }
         }
+
         public FlightPlan GetFlightPlan(int i)
         {
             if (i < 0 || i >= number)
-            {
-                return null;
-            }
+            { return null; }
             else
-            {
-                return vector[i];
-            }
+            { return vector[i]; }
         }
 
         public int GetNum()
-        {
-            return number;
-        }
+        { return this.number; }
+
         public void Mover(double tiempo)
         {
             int i = 0;
@@ -47,6 +43,7 @@ namespace FlightLib
                 i++;
             }
         }
+
         public void EscribeConsola() 
         {
             int i = 0;
@@ -56,6 +53,7 @@ namespace FlightLib
                 i++;
             }
         }
+
         public bool CheckColisions(int DistanciaMinima)
         {
             int i = 0;
@@ -74,5 +72,41 @@ namespace FlightLib
             }
             return false;
         }
+
+        public bool CheckColisionesFuturas(double distanciaMinima)
+        {
+            double tiempoMaximo = 0;
+            for (int i = 0; i < number; i++)
+            {
+                double tiempoHastaDestino = vector[i].GetTiempoHastaDestino();
+                if (tiempoHastaDestino > tiempoMaximo)
+                {
+                    tiempoMaximo = tiempoHastaDestino;
+                }
+            }
+
+            for (double t = 0; t <= tiempoMaximo; t += 1) //Tienes una funcion (HayColisionConElVuelo) que te permite
+                                                          //comprobar si dos vuelos colisionan en un instante de tiempo determinado.
+                                                          //Puedes usarla para comprobar si hay colisiones futuras
+                                                          //entre todos los vuelos en la lista.
+            {
+                for (int i = 0; i < number; i++)
+                {
+                    for (int j = i + 1; j < number; j++)
+                    {
+                        Position pos1 = vector[i].GetPosicionFutura(t);
+                        Position pos2 = vector[j].GetPosicionFutura(t);
+                        double distancia = pos1.Distancia(pos2);
+                        if (distancia < distanciaMinima)
+                        {
+                            Console.WriteLine($"Colisión futura detectada entre los vuelos {vector[i].GetId()} y {vector[j].GetId()} en el tiempo {t} minutos.");
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
     }
 }

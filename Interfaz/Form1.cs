@@ -20,9 +20,9 @@ namespace Interfaz
         public Form1()
         {
             InitializeComponent();
-            listaPlanes.AddFlightPlan(new FlightPlan("A1", 100, 100, 200, 200, 20));
-            listaPlanes.AddFlightPlan(new FlightPlan("A2", 150, 150, 250, 250, 30)); // EVADIR 1rForm (Depuracion)
-            distancia = 200;
+            listaPlanes.AddFlightPlan(new FlightPlan("A1", 100, 100, 300, 300, 50));
+            listaPlanes.AddFlightPlan(new FlightPlan("A2", 300, 100, 100, 300, 50)); // EVADIR 1rForm (Depuracion)
+            distancia = 100;
             tiempo = 10;
         }
 
@@ -43,14 +43,84 @@ namespace Interfaz
 
         private void iniciarSimulaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (listaPlanes.CheckColisionesFuturas(Convert.ToDouble(distancia)))
+            {
+                DialogResult respuesta = MessageBox.Show(
+                    "¡Colisión detectada!\n¿Quiere resolver el conflicto?",
+                    "Aviso",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                    );
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    FlightPlan avionConflicto = null;
+                    for (int i = 0; i < listaPlanes.GetNum(); i++)
+                    {
+                        for (int j = i + 1; j < listaPlanes.GetNum(); j++)
+                        {
+                            FlightPlan avion1 = listaPlanes.GetFlightPlan(i);
+                            FlightPlan avion2 = listaPlanes.GetFlightPlan(j);
+
+                            FlightPlanList prueba = new FlightPlanList();
+                            prueba.AddFlightPlan(avion1);
+                            prueba.AddFlightPlan(avion2);
+
+                            if (prueba.CheckColisionesFuturas(Convert.ToDouble(distancia)))
+                            {
+                                double velocidadOriginal = avion1.GetVelocidad();
+                                for (int intento = 0; intento < 10; intento++)
+                                {
+                                    double nuevaVelocidad = avion1.GetVelocidad() * 0.8; // reducir velocidad en un 20%
+                                    avion1.SetVelocidad(nuevaVelocidad);
+                                    if (!prueba.CheckColisionesFuturas(Convert.ToDouble(distancia)))
+                                    {
+                                        avionConflicto = avion1;
+                                        break;
+                                    }
+                                }
+                                if (avionConflicto == null)
+                                {
+                                    avion1.SetVelocidad(velocidadOriginal);
+                                    continue;
+                                }
+                                break;
+                            }
+                        }
+                        if (avionConflicto != null)
+                        { break; }
+                    }
+
+                    if (avionConflicto != null)
+                    {
+                        MessageBox.Show(
+                        $"El conflicto ha sido resuelto.\n" +
+                        $"Se ha modificado la velocidad del vuelo {avionConflicto.GetId()} a velocidad {avionConflicto.GetVelocidad()}.",
+                        "Conflicto resuelto",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                        );
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "No se ha encontrado una solución con los ajustes probados. " +
+                            "Se mantienen las velocidades originales.",
+                            "No se pudo resolver",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                            );
+                    }
+                }
+            }
+
             Simulador form = new Simulador();
             form.DarDistancia(distancia);
             form.DarTiempo(tiempo);
             form.DarPlanes(listaPlanes);
             form.ShowDialog();
-            
-
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
