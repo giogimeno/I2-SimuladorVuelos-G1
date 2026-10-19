@@ -85,7 +85,7 @@ namespace Interfaz
         {
             for (int i = 0; i < listaPlanes.GetNum(); i++)
             {
-                listaPlanes.GetFlightPlan(i).Mover(tiempo);
+                listaPlanes.GetFlightPlan(i).Mover(tiempo);     
                 Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
                 listaPuntos.GetDot(i).SetPosition(pos);
             }

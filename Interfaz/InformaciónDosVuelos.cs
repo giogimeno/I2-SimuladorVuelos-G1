@@ -45,23 +45,35 @@ namespace Interfaz
         private void vuelostabla_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = e.RowIndex;
-            FlightPlan fp1 = planes.GetFlightPlan(i);
-            FlightPlan fp2;
 
-            if (i == 0)
+            if (i == -1)
             {
-                fp2 = planes.GetFlightPlan(1);
+                MessageBox.Show("Haga click sobre una fila con valores");
             }
 
             else
             {
-                fp2 = planes.GetFlightPlan(0);
+                FlightPlan fp1 = planes.GetFlightPlan(i);
+                FlightPlan fp2;
+
+                if (i == 0)
+                {
+                    fp2 = planes.GetFlightPlan(1);
+                }
+
+                else
+                {
+                    fp2 = planes.GetFlightPlan(0);
+                }
+
+                double distancia = fp1.Distancia(fp2);
+
+                MostrarDistancia formulario = new MostrarDistancia(distancia);
+                formulario.ShowDialog();
+
             }
 
-            double distancia = fp1.Distancia(fp2);
-
-            MostrarDistancia formulario = new MostrarDistancia(distancia);
-            formulario.ShowDialog();
+            
         }
     }
 }
