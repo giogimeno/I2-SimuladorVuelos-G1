@@ -1,8 +1,6 @@
-
 # SIMULADOR DE TRAFICO AEREO
 
 Informática 2 - EETAC - QT2026
-
 
 
 
@@ -18,11 +16,6 @@ Jacob Torres
 
 
 
-
-
 ## Links a los Videos
 
-Insert gif or link to demo
-
-
-
+- Video Versión v.0: https://youtu.be/Rt3KKJuQHB0
