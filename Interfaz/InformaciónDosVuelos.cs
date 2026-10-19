@@ -72,10 +72,10 @@ namespace Interfaz
                 int i = e.RowIndex;
                 CambiarVel form = new CambiarVel();
                 form.ShowDialog();
-                planes.GetFlightPlan(i).SetVelocidad(form.RecibirVelocidad());
                 reset = form.RecibirReset();
                 if (reset == 0)
                 {
+                    planes.GetFlightPlan(i).SetVelocidad(form.RecibirVelocidad());
                     vuelostabla.Rows[i].Cells[5].Value = form.RecibirVelocidad();
                 }
 
