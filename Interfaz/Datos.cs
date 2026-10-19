@@ -59,5 +59,22 @@ namespace Interfaz
             return listaPlanes;
             
         }
+
+        private void autoRelleno_Click(object sender, EventArgs e)
+        {
+            plan1Id.Text = "A1";
+            plan1XInicio.Text = "100";
+            plan1YInicio.Text = "100";
+            plan1XFinal.Text = "300";
+            plan1YFinal.Text = "300";
+            plan1Vel.Text = "50";
+
+            plan2Id.Text = "A2";
+            plan2XInicio.Text = "300";
+            plan2YInicio.Text = "100";
+            plan2XFinal.Text = "100";
+            plan2YFinal.Text = "300";
+            plan2Vel.Text = "50";
+        }
     }
 }

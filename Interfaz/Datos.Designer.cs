@@ -50,6 +50,7 @@
             this.plan2YInicio = new System.Windows.Forms.TextBox();
             this.plan2XInicio = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.autoRelleno = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -237,11 +238,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // autoRelleno
+            // 
+            this.autoRelleno.Location = new System.Drawing.Point(220, 379);
+            this.autoRelleno.Name = "autoRelleno";
+            this.autoRelleno.Size = new System.Drawing.Size(168, 23);
+            this.autoRelleno.TabIndex = 24;
+            this.autoRelleno.Text = "Autorellenar";
+            this.autoRelleno.UseVisualStyleBackColor = true;
+            this.autoRelleno.Click += new System.EventHandler(this.autoRelleno_Click);
+            // 
             // Datos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(471, 450);
+            this.Controls.Add(this.autoRelleno);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.plan2YFinal);
@@ -295,5 +307,6 @@
         private System.Windows.Forms.TextBox plan2YInicio;
         private System.Windows.Forms.TextBox plan2XInicio;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button autoRelleno;
     }
 }
