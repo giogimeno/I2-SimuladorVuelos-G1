@@ -54,12 +54,12 @@ namespace Interfaz
 
         private void MensajeColision(FlightPlan a, FlightPlan b)
         {
-            MessageBox.Show("Colisión Detectada: " + a.GetId() +
-                            " y el vuelo " + b.GetId(),
-                            "Error de Colisión",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error
-                            );
+            //MessageBox.Show("Colisión Detectada: " + a.GetId() +
+                            //" y el vuelo " + b.GetId(),
+                            //"Error de Colisión",
+                            //MessageBoxButtons.OK,
+                            //MessageBoxIcon.Error
+                            //);
         }
 
         private void IdentificarVuelosEnColision()
@@ -97,8 +97,9 @@ namespace Interfaz
         private void panelSimulador_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            Pen PenLinea = new Pen(Color.Red);
-            Pen PenCirculo = new Pen(Color.Yellow);
+            Pen PenLinea = new Pen(Color.Red,0.5F);
+            Pen PenCirculoVERDE = new Pen(Color.Green, 1.5F);
+            Pen PenCirculoNARANJA = new Pen(Color.Orange, 1.5F);
 
             double distancia_total = distancia;
             int diametro = Convert.ToInt32(distancia_total / 2);
@@ -117,7 +118,20 @@ namespace Interfaz
                                   Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetFinalPosition().GetX()),
                                   Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetFinalPosition().GetY()));
 
-                g.DrawEllipse(PenCirculo, x_centro, y_centro, diametro, diametro);
+                int j = 0;
+
+                while (j < listaPlanes.GetNum())
+                {
+                    if (i != j)
+                    {
+                        if (listaPlanes.GetFlightPlan(i).HayColisionConElVuelo(
+                            listaPlanes.GetFlightPlan(j), Convert.ToInt32(distancia / 2)))
+                        { g.DrawEllipse(PenCirculoNARANJA, x_centro, y_centro, diametro, diametro); }
+                        else
+                        { g.DrawEllipse(PenCirculoVERDE, x_centro, y_centro, diametro, diametro); }
+                    }
+                    j++;
+                }
                 i++;
             }
         }
