@@ -33,6 +33,9 @@ namespace FlightLib
         public Position GetFinalPosition()
         { return this.finalPosition; }
 
+        public Position GetInitialPosition()
+        { return this.initialPosition; }
+
         public string GetId()
         { return this.id; }
 
