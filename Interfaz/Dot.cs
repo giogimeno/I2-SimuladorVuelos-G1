@@ -1,7 +1,9 @@
 ﻿using FlightLib;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -14,6 +16,8 @@ namespace Interfaz
     {
         PictureBox newpic;
         int size;
+
+        FlightPlan planvuelo;
 
         public Dot(Position pos, int size, FlightPlan planvuelo)  //el dot también tiene que recibir el flightplan del avión que representa
         {
@@ -31,11 +35,15 @@ namespace Interfaz
             newpic.BackColor = Color.Red;
             newpic.Location = new Point(x_centro, y_centro);
 
-            newpic.Click += (sender, e) =>
-            {
-                InformacionAvion form = new InformacionAvion(planvuelo);
-                form.ShowDialog();
-            };
+            newpic.Click += new System.EventHandler(evento);
+            this.planvuelo = planvuelo;
+
+        }
+
+        private void evento(object sender, EventArgs e)
+        {
+            InformacionAvion form = new InformacionAvion(planvuelo);
+            form.ShowDialog();
         }
 
         public void SetPosition(Position pos)

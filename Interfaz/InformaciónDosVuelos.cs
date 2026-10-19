@@ -14,6 +14,7 @@ namespace Interfaz
     public partial class InformaciónDosVuelos : Form
     {
         FlightPlanList planes;
+        int reset;
         public InformaciónDosVuelos(FlightPlanList planes)
         {
             InitializeComponent();
@@ -27,11 +28,11 @@ namespace Interfaz
                 vuelostabla.Rows.Add();
 
                 vuelostabla.Rows[i].Cells[0].Value = planes.GetFlightPlan(i).GetId();
-                vuelostabla.Rows[i].Cells[1].Value = planes.GetFlightPlan(i).GetActualPosition().GetX();
-                vuelostabla.Rows[i].Cells[2].Value = planes.GetFlightPlan(i).GetActualPosition().GetY();
+                vuelostabla.Rows[i].Cells[1].Value = Convert.ToInt32(planes.GetFlightPlan(i).GetActualPosition().GetX());
+                vuelostabla.Rows[i].Cells[2].Value = Convert.ToInt32(planes.GetFlightPlan(i).GetActualPosition().GetY());
                 vuelostabla.Rows[i].Cells[3].Value = planes.GetFlightPlan(i).GetFinalPosition().GetX();
                 vuelostabla.Rows[i].Cells[4].Value = planes.GetFlightPlan(i).GetFinalPosition().GetY();
-                vuelostabla.Rows[i].Cells[2].Value = planes.GetFlightPlan(i).GetVelocidad();
+                vuelostabla.Rows[i].Cells[5].Value = planes.GetFlightPlan(i).GetVelocidad();
 
                 i = i + 1;
             }
@@ -44,15 +45,9 @@ namespace Interfaz
 
         private void vuelostabla_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int i = e.RowIndex;
-
-            if (i == -1)
+            if (e.ColumnIndex != 5)
             {
-                MessageBox.Show("Haga click sobre una fila con valores");
-            }
-
-            else
-            {
+                int i = e.RowIndex;
                 FlightPlan fp1 = planes.GetFlightPlan(i);
                 FlightPlan fp2;
 
@@ -70,10 +65,32 @@ namespace Interfaz
 
                 MostrarDistancia formulario = new MostrarDistancia(distancia);
                 formulario.ShowDialog();
+            }
+
+            else
+            {
+                int i = e.RowIndex;
+                CambiarVel form = new CambiarVel();
+                form.ShowDialog();
+                planes.GetFlightPlan(i).SetVelocidad(form.RecibirVelocidad());
+                reset = form.RecibirReset();
+                if (reset == 0)
+                {
+                    vuelostabla.Rows[i].Cells[5].Value = form.RecibirVelocidad();
+                }
 
             }
 
-            
+        }
+
+        public FlightPlanList RecibirPlanes()
+        {
+            return planes;
+        }
+
+        public int RecibirReset()
+        {
+            return reset;
         }
     }
 }
