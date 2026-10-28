@@ -50,7 +50,7 @@
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Datos";
+            this.Column1.HeaderText = "Datos_Planes";
             this.Column1.MinimumWidth = 8;
             this.Column1.Name = "Column1";
             this.Column1.Width = 150;
@@ -70,7 +70,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(161, 25);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Datos del avión";
+            this.label1.Text = "Datos_Planes del avión";
             // 
             // InformacionAviones
             // 

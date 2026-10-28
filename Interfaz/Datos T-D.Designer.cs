@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class Datos2
+    partial class Datos_Tiempo_Distancia
     {
         /// <summary>
         /// Required designer variable.
@@ -91,7 +91,7 @@
             this.autoRellenar2.UseVisualStyleBackColor = true;
             this.autoRellenar2.Click += new System.EventHandler(this.autoRellenar2_Click);
             // 
-            // Datos2
+            // Datos_Tiempo_Distancia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -102,8 +102,8 @@
             this.Controls.Add(this.tiempoCiclo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
-            this.Name = "Datos2";
-            this.Text = "Datos2";
+            this.Name = "Datos_Tiempo_Distancia";
+            this.Text = "Datos_Tiempo_Distancia";
             this.Load += new System.EventHandler(this.Datos2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

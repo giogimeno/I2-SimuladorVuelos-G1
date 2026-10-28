@@ -48,15 +48,27 @@ namespace Interfaz
 
         public void SetPosition(Position pos)
         {
-            double posx = pos.GetX();
-            int x = Convert.ToInt32(posx);
-            double posy = pos.GetY();
-            int y = Convert.ToInt32(posy);
+            try
+            {
+                double posx = pos.GetX();
+                int x = Convert.ToInt32(posx);
+                double posy = pos.GetY();
+                int y = Convert.ToInt32(posy);
 
-            int x_centro = x - this.size / 2;    // Ajustar la posición para centrar el punto
-            int y_centro = y - this.size / 2;
+                int x_centro = x - this.size / 2;    // Ajustar la posición para centrar el punto
+                int y_centro = y - this.size / 2;
 
-            newpic.Location = new Point(x_centro, y_centro);
+                newpic.Location = new Point(x_centro, y_centro);
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show(
+                "Existe un error en la asignación de posición.\nPor favor, verifique la información e inténtelo de nuevo.",
+                "Atención - Error de Datos_Planes",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+            }
+            
         }
 
         public void SetSize(int size)

@@ -52,25 +52,25 @@
     <Compile Include="CambiarVel.Designer.cs">
       <DependentUpon>CambiarVel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Datos.cs">
+    <Compile Include="Datos_Planes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Datos.Designer.cs">
-      <DependentUpon>Datos.cs</DependentUpon>
+    <Compile Include="Datos_Planes.Designer.cs">
+      <DependentUpon>Datos_Planes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Datos2.cs">
+    <Compile Include="Datos T-D.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Datos2.Designer.cs">
-      <DependentUpon>Datos2.cs</DependentUpon>
+    <Compile Include="Datos T-D.Designer.cs">
+      <DependentUpon>Datos T-D.cs</DependentUpon>
     </Compile>
     <Compile Include="Dot.cs" />
     <Compile Include="DotList.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="F_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="F_Principal.Designer.cs">
+      <DependentUpon>F_Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="InformacionAvion.cs">
       <SubType>Form</SubType>
@@ -98,17 +98,18 @@
     <Compile Include="Simulador.Designer.cs">
       <DependentUpon>Simulador.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestorDeConflictos.cs" />
     <EmbeddedResource Include="CambiarVel.resx">
       <DependentUpon>CambiarVel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Datos.resx">
-      <DependentUpon>Datos.cs</DependentUpon>
+    <EmbeddedResource Include="Datos_Planes.resx">
+      <DependentUpon>Datos_Planes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Datos2.resx">
-      <DependentUpon>Datos2.cs</DependentUpon>
+    <EmbeddedResource Include="Datos T-D.resx">
+      <DependentUpon>Datos T-D.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="F_Principal.resx">
+      <DependentUpon>F_Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InformacionAvion.resx">
       <DependentUpon>InformacionAvion.cs</DependentUpon>

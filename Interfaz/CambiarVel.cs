@@ -19,14 +19,28 @@ namespace Interfaz
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public double RecibirVelocidad()
+        {
+            return this.newVelocidad;
+        }
+
+        public int RecibirReset()
+        {
+            return this.reset;
+        }
+
+        private void CambiarVel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
             try
             {
-                newVelocidad = Convert.ToDouble(velocidadTextBox.Text);
-                Close();
+                this.newVelocidad = Convert.ToDouble(velocidadTextBox.Text);
                 reset = 0;
-
+                Close();
             }
 
             catch (FormatException)
@@ -34,18 +48,6 @@ namespace Interfaz
                 MessageBox.Show("Error al introducir los datos.");
                 reset = -1;
             }
-
-
-        }
-
-        public double RecibirVelocidad()
-        {
-            return newVelocidad;
-        }
-
-        public int RecibirReset()
-        {
-            return reset;
         }
     }
 }

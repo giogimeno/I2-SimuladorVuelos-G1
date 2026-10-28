@@ -20,7 +20,6 @@ namespace Interfaz
         double distancia;
         int moverParar = 0;
 
-
         public Simulador()
         { InitializeComponent(); }
 
@@ -39,7 +38,6 @@ namespace Interfaz
 
             while (i < listaPlanes.GetNum())
             {
-
                 FlightPlan plan = listaPlanes.GetFlightPlan(i);  //guarda el flight plan correspondiente a ese punto en concreto
                 Position pos = plan.GetActualPosition();
 
@@ -52,35 +50,6 @@ namespace Interfaz
             }
         }
 
-        private void MensajeColision(FlightPlan a, FlightPlan b)
-        {
-            //MessageBox.Show("Colisión Detectada: " + a.GetId() +
-                            //" y el vuelo " + b.GetId(),
-                            //"Error de Colisión",
-                            //MessageBoxButtons.OK,
-                            //MessageBoxIcon.Error
-                            //);
-        }
-
-        private void IdentificarVuelosEnColision()
-        {
-            int k = 0;
-            while (k < listaPlanes.GetNum())
-            {
-                int l = 0;
-                while (l < listaPlanes.GetNum() && k != l)
-                {
-                    if (listaPlanes.GetFlightPlan(k).HayColisionConElVuelo(listaPlanes.GetFlightPlan(l),
-                        Convert.ToInt32(distancia / 2)))
-                    {
-                        MensajeColision(listaPlanes.GetFlightPlan(k), listaPlanes.GetFlightPlan(l));
-                    }
-                    l++;
-                }
-                k++;
-            }
-        }
-
         private void mover_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < listaPlanes.GetNum(); i++)
@@ -90,14 +59,12 @@ namespace Interfaz
                 listaPuntos.GetDot(i).SetPosition(pos);
             }
             panelSimulador.Invalidate();
-
-            IdentificarVuelosEnColision();
         }
 
         private void panelSimulador_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            Pen PenLinea = new Pen(Color.Red,0.5F);
+            Pen PenLinea = new Pen(Color.Red, 0.5F);
             Pen PenCirculoVERDE = new Pen(Color.Green, 1.5F);
             Pen PenCirculoNARANJA = new Pen(Color.Orange, 1.5F);
 
@@ -114,18 +81,19 @@ namespace Interfaz
                 int y_centro = YEsquina - diametro / 2;
 
                 g.DrawLine(PenLinea, Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetActualPosition().GetX()),
-                                  Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetActualPosition().GetY()),
-                                  Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetFinalPosition().GetX()),
-                                  Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetFinalPosition().GetY()));
+                              Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetActualPosition().GetY()),
+                              Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetFinalPosition().GetX()),
+                              Convert.ToInt32(listaPlanes.GetFlightPlan(i).GetFinalPosition().GetY()));
 
                 int j = 0;
-
                 while (j < listaPlanes.GetNum())
                 {
                     if (i != j)
                     {
-                        if (listaPlanes.GetFlightPlan(i).HayColisionConElVuelo(
-                            listaPlanes.GetFlightPlan(j), Convert.ToInt32(distancia / 2)))
+                        FlightPlan plani = listaPlanes.GetFlightPlan(i);
+                        FlightPlan planj = listaPlanes.GetFlightPlan(j);
+
+                        if (plani.Distancia(planj) <= diametro)
                         { g.DrawEllipse(PenCirculoNARANJA, x_centro, y_centro, diametro, diametro); }
                         else
                         { g.DrawEllipse(PenCirculoVERDE, x_centro, y_centro, diametro, diametro); }
@@ -145,15 +113,6 @@ namespace Interfaz
                 listaPuntos.GetDot(i).SetPosition(pos);
             }
             panelSimulador.Invalidate();
-            if (listaPlanes.CheckColisions(Convert.ToInt32(distancia / 2)))
-            {
-                timer1.Stop(); //Resetea el boton al estado inicial
-                auto.Text = "▶ AUTO";
-                auto.BackColor = Color.Green;
-                moverParar = 0;
-
-                IdentificarVuelosEnColision(); //Muestra los vuelos en colision
-            }
         }
 
         private void auto_Click(object sender, EventArgs e)
@@ -200,33 +159,39 @@ namespace Interfaz
 
         private void boton_prediccion_colisiones_Click(object sender, EventArgs e)
         {
-            bool haycolision = false;
-            int t = 0;
-            while (t < 2000 && haycolision == false) // Limite de seguridad de 2000 ciclos para evitar bucles infinitos.
-            {
-                for (int i = 0; i < listaPlanes.GetNum(); i++)
-                {
-                    listaPlanes.GetFlightPlan(i).Mover(tiempo);
-                    Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
-                    listaPuntos.GetDot(i).SetPosition(pos);
-                }
+            double margenSeguridad = distancia / 2.0;
+            bool hayConflicto = false;
+            int numVuelos = listaPlanes.GetNum();
 
-                if (listaPlanes.CheckColisions(Convert.ToInt32(distancia / 2)))
-                {
-                    IdentificarVuelosEnColision();
-                    haycolision = true;
-                }
-                t++;
-            }
-            for (int i = 0; i < listaPlanes.GetNum(); i++) //Resetear toda la simulación.
+            for (int i = 0; i < listaPlanes.GetNum(); i++)
             {
-                listaPlanes.GetFlightPlan(i).Restart();
-                Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
-                listaPuntos.GetDot(i).SetPosition(pos);
+                for (int j = i + 1; j < numVuelos; j++)
+                {
+                    FlightPlan planA = listaPlanes.GetFlightPlan(i);
+                    FlightPlan planB = listaPlanes.GetFlightPlan(j);
+
+                    ResultadoPrediccionColisiones res = planA.PredecirConflicto(planB, margenSeguridad);
+
+                    if (res.HayColision)
+                    { hayConflicto = true; break; }
+                }
+                if (hayConflicto) break; // Detiene la búsqueda al encontrar la primera colisión
             }
 
-            panelSimulador.Invalidate();
-            panelSimulador.Refresh();
+            if (!hayConflicto)
+            {
+                MessageBox.Show(
+                    "No se han detectado conflictos de trayectorias entre ningún vuelo.",
+                    "Sin Conflictos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                GestorDeConflictos gestor = new GestorDeConflictos(listaPlanes, distancia);
+                gestor.GestionarConflictos();
+            }
         }
 
         private void boton_reset_Click(object sender, EventArgs e)
@@ -240,5 +205,9 @@ namespace Interfaz
                 panelSimulador.Refresh();
             }
         }
+
+        private void panelSimulador_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        { }
+
     }
 }

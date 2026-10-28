@@ -87,16 +87,6 @@ namespace SimulatorConsole
             // Ya navegamos directo con clase de array, no con array directo
 
             lista.EscribeConsola();
-                                  
-            int ciclos = 0;
-            int Tciclo = 5;
-            int DistanciaMinima = 10;
-            while (ciclos < 1000 && !lista.CheckColisions(DistanciaMinima))
-            {
-                lista.Mover(Tciclo);
-                ciclos++;
-            }
-            Console.WriteLine("Simulación finalizada. Se han realizado {0} ciclos.", ciclos);
 
             
         }   

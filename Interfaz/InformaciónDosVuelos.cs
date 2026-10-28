@@ -13,13 +13,13 @@ namespace Interfaz
 {
     public partial class InformaciónDosVuelos : Form
     {
-        FlightPlanList planes;
+        FlightPlanList listaPlanes;
         int reset;
         public InformaciónDosVuelos(FlightPlanList planes)
         {
             InitializeComponent();
 
-            this.planes = planes;
+            this.listaPlanes = planes;
 
             int i = 0;
 
@@ -39,32 +39,27 @@ namespace Interfaz
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        { Close(); }
 
         private void vuelostabla_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex != 5)
             {
                 int i = e.RowIndex;
-                FlightPlan fp1 = planes.GetFlightPlan(i);
+                FlightPlan fp1 = listaPlanes.GetFlightPlan(i);
                 FlightPlan fp2;
 
                 if (i == 0)
-                {
-                    fp2 = planes.GetFlightPlan(1);
-                }
-
+                { fp2 = listaPlanes.GetFlightPlan(1); }
                 else
+                { fp2 = listaPlanes.GetFlightPlan(0); }
+
+                if (i != -1 && fp1 != null && fp2 != null)
                 {
-                    fp2 = planes.GetFlightPlan(0);
+                    double distancia = fp1.Distancia(fp2);
+                    MostrarDistancia formulario = new MostrarDistancia(distancia);
+                    formulario.ShowDialog();
                 }
-
-                double distancia = fp1.Distancia(fp2);
-
-                MostrarDistancia formulario = new MostrarDistancia(distancia);
-                formulario.ShowDialog();
             }
 
             else
@@ -72,25 +67,37 @@ namespace Interfaz
                 int i = e.RowIndex;
                 CambiarVel form = new CambiarVel();
                 form.ShowDialog();
-                planes.GetFlightPlan(i).SetVelocidad(form.RecibirVelocidad());
-                reset = form.RecibirReset();
-                if (reset == 0)
+                double NuevaVelocidad = form.RecibirVelocidad();
+                //listaPlanes.GetFlightPlan(i).SetVelocidad(NuevaVelocidad);
+
+                if (i != -1)
                 {
-                    vuelostabla.Rows[i].Cells[5].Value = form.RecibirVelocidad();
+                    FlightPlan fp1 = listaPlanes.GetFlightPlan(i);
+                    if (fp1 != null)
+                    {
+                        listaPlanes.GetFlightPlan(i).SetVelocidad(NuevaVelocidad);
+                        reset = form.RecibirReset();
+                        if (reset == 0)
+                        { vuelostabla.Rows[i].Cells[5].Value = NuevaVelocidad; }
+                    }
                 }
-
             }
-
         }
 
         public FlightPlanList RecibirPlanes()
-        {
-            return planes;
-        }
+        { return listaPlanes; }
 
         public int RecibirReset()
+        { return reset; }
+
+        private void InformaciónDosVuelos_Load(object sender, EventArgs e)
         {
-            return reset;
+
+        }
+
+        private void vuelostabla_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

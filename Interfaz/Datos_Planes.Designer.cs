@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class Datos
+    partial class Datos_Planes
     {
         /// <summary>
         /// Required designer variable.
@@ -248,7 +248,7 @@
             this.autoRelleno.UseVisualStyleBackColor = true;
             this.autoRelleno.Click += new System.EventHandler(this.autoRelleno_Click);
             // 
-            // Datos
+            // Datos_Planes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -276,8 +276,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Datos";
-            this.Text = "Datos";
+            this.Name = "Datos_Planes";
+            this.Text = "Datos_Planes";
+            this.Load += new System.EventHandler(this.Datos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

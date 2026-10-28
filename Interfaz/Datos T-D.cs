@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class Datos2 : Form
+    public partial class Datos_Tiempo_Distancia : Form
     {
         double tiempo;
         double distancia;
         
-        public Datos2()
+        public Datos_Tiempo_Distancia()
         {
             InitializeComponent();
         }
@@ -30,7 +30,12 @@ namespace Interfaz
 
             catch (FormatException)
             {
-                MessageBox.Show("Error en el formato de los datos");
+                MessageBox.Show(
+                "Los datos introducidos no son válidos o están incompletos.\nPor favor, verifique la información e inténtelo de nuevo.",
+                "Atención - Error de Datos_Planes",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+                );
             }
             Close();
         }
