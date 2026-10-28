@@ -19,18 +19,22 @@ namespace Interfaz
             InitializeComponent();
         }
 
+
         public double RecibirVelocidad()
         {
-            return this.newVelocidad;
-        }
+            try
+            {
+                newVelocidad = Convert.ToDouble(velocidadTextBox.Text);
+                Close();
+            }
 
-        public int RecibirReset()
-        {
-            return this.reset;
-        }
+            catch (FormatException)
+            {
+                MessageBox.Show("Error al introducir los datos.");
+            }
 
-        private void CambiarVel_Load(object sender, EventArgs e)
-        {
+            reset = 0;
+            return newVelocidad;
 
         }
 
@@ -49,5 +53,11 @@ namespace Interfaz
                 reset = -1;
             }
         }
+        private void CambiarVel_Load(object sender, EventArgs e)
+        {
+
+        }
+        public int RecibirReset()
+        { return reset; }
     }
 }
