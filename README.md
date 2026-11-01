@@ -18,4 +18,5 @@ Jacob Torres
 
 ## Links a los Videos
 
-- Video Versión v.0: https://youtu.be/Rt3KKJuQHB0
+- Video Versión v0.0: https://youtu.be/Rt3KKJuQHB0
+- Video Versión v1.0: https://youtu.be/8wpc1OL2JXo
