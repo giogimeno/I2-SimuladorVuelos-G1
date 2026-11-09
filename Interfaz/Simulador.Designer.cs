@@ -36,7 +36,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.boton_prediccion_colisiones = new System.Windows.Forms.Button();
             this.boton_reset = new System.Windows.Forms.Button();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guardarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelSimulador)).BeginInit();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // mover
@@ -82,10 +87,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 23);
+            this.button1.Location = new System.Drawing.Point(12, 27);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(242, 33);
+            this.button1.Size = new System.Drawing.Size(242, 27);
             this.button1.TabIndex = 7;
             this.button1.Text = "Mostrar información de los vuelos";
             this.button1.UseVisualStyleBackColor = true;
@@ -93,10 +98,10 @@
             // 
             // boton_prediccion_colisiones
             // 
-            this.boton_prediccion_colisiones.Location = new System.Drawing.Point(260, 23);
+            this.boton_prediccion_colisiones.Location = new System.Drawing.Point(260, 27);
             this.boton_prediccion_colisiones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.boton_prediccion_colisiones.Name = "boton_prediccion_colisiones";
-            this.boton_prediccion_colisiones.Size = new System.Drawing.Size(181, 33);
+            this.boton_prediccion_colisiones.Size = new System.Drawing.Size(175, 27);
             this.boton_prediccion_colisiones.TabIndex = 8;
             this.boton_prediccion_colisiones.Text = "Predicción de Colisiones";
             this.boton_prediccion_colisiones.UseVisualStyleBackColor = true;
@@ -116,6 +121,40 @@
             this.boton_reset.UseVisualStyleBackColor = false;
             this.boton_reset.Click += new System.EventHandler(this.boton_reset_Click);
             // 
+            // menuStrip2
+            // 
+            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(1080, 28);
+            this.menuStrip2.TabIndex = 11;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.guardarPlanesToolStripMenuItem,
+            this.cargarPlanesToolStripMenuItem});
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.archivoToolStripMenuItem.Text = "Archivo";
+            // 
+            // guardarPlanesToolStripMenuItem
+            // 
+            this.guardarPlanesToolStripMenuItem.Name = "guardarPlanesToolStripMenuItem";
+            this.guardarPlanesToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.guardarPlanesToolStripMenuItem.Text = "Guardar planes";
+            this.guardarPlanesToolStripMenuItem.Click += new System.EventHandler(this.guardarPlanesToolStripMenuItem_Click);
+            // 
+            // cargarPlanesToolStripMenuItem
+            // 
+            this.cargarPlanesToolStripMenuItem.Name = "cargarPlanesToolStripMenuItem";
+            this.cargarPlanesToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.cargarPlanesToolStripMenuItem.Text = "Cargar Planes";
+            this.cargarPlanesToolStripMenuItem.Click += new System.EventHandler(this.cargarPlanesToolStripMenuItem_Click);
+            // 
             // Simulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -127,11 +166,15 @@
             this.Controls.Add(this.auto);
             this.Controls.Add(this.mover);
             this.Controls.Add(this.panelSimulador);
+            this.Controls.Add(this.menuStrip2);
             this.Name = "Simulador";
             this.Text = "Simulador";
             this.Load += new System.EventHandler(this.Simulador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelSimulador)).EndInit();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -144,5 +187,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button boton_prediccion_colisiones;
         private System.Windows.Forms.Button boton_reset;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem guardarPlanesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cargarPlanesToolStripMenuItem;
     }
 }

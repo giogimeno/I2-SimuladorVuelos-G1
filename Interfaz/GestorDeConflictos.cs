@@ -12,17 +12,15 @@ namespace Interfaz
     public class GestorDeConflictos
     {
         private FlightPlanList listaPlanes;
-        private double distancia;
 
-        public GestorDeConflictos(FlightPlanList listaPlanes, double distancia)
+        public GestorDeConflictos(FlightPlanList listaPlanes)
         {
             this.listaPlanes = listaPlanes;
-            this.distancia = distancia;
         }
 
         public bool ExisteConflictoConCualquiera(FlightPlan avion, int indiceAvion)
         {
-            double margenSeguridad = distancia / 2.0;
+            double margenSeguridad = listaPlanes.GetDistanciaSeguridad() / 2.0;
             for (int k = 0; k < listaPlanes.GetNum(); k++)
             {
                 if (k != indiceAvion)
@@ -39,7 +37,7 @@ namespace Interfaz
 
         public void GestionarConflictos()
         {
-            double margenSeguridad = distancia / 2.0; // Mismo margen de distancia usado en todo el simulador
+            double margenSeguridad = listaPlanes.GetDistanciaSeguridad() / 2.0; // Mismo margen de distancia usado en todo el simulador
             bool hayConflictoInicial = false;
 
             // 1. Comprobar si existe alguna colisión analítica en la lista de listaPlanes

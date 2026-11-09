@@ -45,7 +45,6 @@
             this.opcionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1132, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -65,21 +64,21 @@
             // añadirDatosToolStripMenuItem
             // 
             this.añadirDatosToolStripMenuItem.Name = "añadirDatosToolStripMenuItem";
-            this.añadirDatosToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.añadirDatosToolStripMenuItem.Size = new System.Drawing.Size(305, 26);
             this.añadirDatosToolStripMenuItem.Text = "Añadir Datos_Planes de Planes";
             this.añadirDatosToolStripMenuItem.Click += new System.EventHandler(this.añadirDatosToolStripMenuItem_Click);
             // 
             // añadirTiempoYDistanciaToolStripMenuItem
             // 
             this.añadirTiempoYDistanciaToolStripMenuItem.Name = "añadirTiempoYDistanciaToolStripMenuItem";
-            this.añadirTiempoYDistanciaToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.añadirTiempoYDistanciaToolStripMenuItem.Size = new System.Drawing.Size(305, 26);
             this.añadirTiempoYDistanciaToolStripMenuItem.Text = "Añadir Tiempo y Distancia";
             this.añadirTiempoYDistanciaToolStripMenuItem.Click += new System.EventHandler(this.añadirTiempoYDistanciaToolStripMenuItem_Click);
             // 
             // iniciarSimulaciónToolStripMenuItem
             // 
             this.iniciarSimulaciónToolStripMenuItem.Name = "iniciarSimulaciónToolStripMenuItem";
-            this.iniciarSimulaciónToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.iniciarSimulaciónToolStripMenuItem.Size = new System.Drawing.Size(305, 26);
             this.iniciarSimulaciónToolStripMenuItem.Text = "Iniciar Simulación";
             this.iniciarSimulaciónToolStripMenuItem.Click += new System.EventHandler(this.iniciarSimulaciónToolStripMenuItem_Click);
             // 
@@ -89,14 +88,14 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // Form1
+            // Form_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1132, 703);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "Form_Principal";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);

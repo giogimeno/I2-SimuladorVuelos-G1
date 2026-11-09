@@ -14,6 +14,7 @@ namespace Interfaz
     public partial class Identificacion : Form
     {
         Gestion mi_base = new Gestion();
+        int result = -1;
         public Identificacion()
         {
             InitializeComponent();
@@ -30,8 +31,8 @@ namespace Interfaz
             if (resultado == 0)
             {
                 mi_base.Cerrar();
-                Form_Principal form1 = new Form_Principal();
-                form1.ShowDialog();
+                result = 0;
+                Close();
             }
 
             else
@@ -50,6 +51,11 @@ namespace Interfaz
         {
             usuarioBox.Text = "claudia.allende";
             contraseñaBox.Text = "claudiaisthebest";
+        }
+
+        public int GetResult()
+        {
+            return result;
         }
     }
 }

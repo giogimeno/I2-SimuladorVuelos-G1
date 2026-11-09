@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Interfaz
 {
     public partial class Simulador : Form
     {
-        FlightPlanList listaPlanes;
+        FlightPlanList listaPlanes = new FlightPlanList();
         DotList listaPuntos = new DotList();
         double tiempo;
         double distancia;
@@ -24,14 +25,11 @@ namespace Interfaz
         { InitializeComponent(); }
 
         public void DarPlanes(FlightPlanList listaPlanes)
-        { this.listaPlanes = listaPlanes; }
-
-        public void DarTiempo(double tiempo)
-        { this.tiempo = tiempo; }
-
-        public void DarDistancia(double distancia)
-        { this.distancia = distancia; }
-
+        { 
+            this.listaPlanes = listaPlanes;
+            this.tiempo = listaPlanes.GetTiempo();
+            this.distancia = listaPlanes.GetDistanciaSeguridad();
+        }
         private void Simulador_Load(object sender, EventArgs e)
         {
             int i = 0;
@@ -144,7 +142,7 @@ namespace Interfaz
             form.RecibirPlanes();
             if (form.RecibirReset() == 0)
             {
-                for (int i = 0; i < listaPlanes.GetNum(); i++) //Resetear toda la simulación.
+                for (int i = 0; i < listaPlanes.GetNum(); i++)
                 {
                     listaPlanes.GetFlightPlan(i).Restart();
                     Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
@@ -189,7 +187,7 @@ namespace Interfaz
             }
             else
             {
-                GestorDeConflictos gestor = new GestorDeConflictos(listaPlanes, distancia);
+                GestorDeConflictos gestor = new GestorDeConflictos(listaPlanes);
                 gestor.GestionarConflictos();
             }
         }
@@ -209,5 +207,56 @@ namespace Interfaz
         private void panelSimulador_CellContentClick(object sender, DataGridViewCellEventArgs e)
         { }
 
+        private void guardarPlanesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog selector = new SaveFileDialog();
+            selector.Filter = "Archivos de texto (*.txt)|*.txt";
+
+            int i = 1;
+
+            if (selector.ShowDialog() == DialogResult.OK)
+            {
+
+                i = listaPlanes.GuardarPlanes(selector.FileName);
+
+            }
+
+            if (i == 0)
+            {
+                MessageBox.Show("Planes guardados correctamente.");
+            }
+        }
+
+        private void cargarPlanesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog selector = new OpenFileDialog();
+            selector.Filter = "Archivos de texto (*.txt)|*.txt";
+
+            int i = 1;
+
+            if (selector.ShowDialog() == DialogResult.OK)
+            {
+
+                i = listaPlanes.CargarArchivo(selector.FileName);
+
+            }
+
+            if (i == 0)
+            {
+                MessageBox.Show("Planes cargados correctamente. Vuelva a abrir el simulador.");
+                Close();
+                
+            }
+
+            else if (i == -1)
+            {
+                MessageBox.Show("Error con el formato del archivo");
+            }
+
+            else if (i == -2)
+            {
+                MessageBox.Show("Archivo no encotrado.");
+            }
+        }
     }
 }

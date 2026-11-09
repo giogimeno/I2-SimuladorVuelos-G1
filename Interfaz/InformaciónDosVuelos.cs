@@ -68,7 +68,6 @@ namespace Interfaz
                 CambiarVel form = new CambiarVel();
                 form.ShowDialog();
                 double NuevaVelocidad = form.RecibirVelocidad();
-                //listaPlanes.GetFlightPlan(i).SetVelocidad(NuevaVelocidad);
 
                 if (i != -1)
                 {
@@ -76,7 +75,7 @@ namespace Interfaz
                     if (fp1 != null)
                     {
                         listaPlanes.GetFlightPlan(i).SetVelocidad(NuevaVelocidad);
-                        reset = form.RecibirReset();
+                        int reset = form.RecibirReset();
                         if (reset == 0)
                         { vuelostabla.Rows[i].Cells[5].Value = NuevaVelocidad; }
                     }
