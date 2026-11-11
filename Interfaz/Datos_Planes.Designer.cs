@@ -242,7 +242,7 @@
             // 
             this.autoRelleno.Location = new System.Drawing.Point(220, 379);
             this.autoRelleno.Name = "autoRelleno";
-            this.autoRelleno.Size = new System.Drawing.Size(168, 23);
+            this.autoRelleno.Size = new System.Drawing.Size(168, 29);
             this.autoRelleno.TabIndex = 24;
             this.autoRelleno.Text = "Autorellenar";
             this.autoRelleno.UseVisualStyleBackColor = true;

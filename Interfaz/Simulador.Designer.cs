@@ -33,7 +33,7 @@
             this.panelSimulador = new System.Windows.Forms.DataGridView();
             this.auto = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.MostrarInfoVuelos = new System.Windows.Forms.Button();
             this.boton_prediccion_colisiones = new System.Windows.Forms.Button();
             this.boton_reset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.panelSimulador)).BeginInit();
@@ -42,9 +42,9 @@
             // mover
             // 
             this.mover.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mover.Location = new System.Drawing.Point(834, 23);
+            this.mover.Location = new System.Drawing.Point(794, 12);
             this.mover.Name = "mover";
-            this.mover.Size = new System.Drawing.Size(111, 33);
+            this.mover.Size = new System.Drawing.Size(131, 33);
             this.mover.TabIndex = 5;
             this.mover.Text = "MOVER";
             this.mover.UseVisualStyleBackColor = true;
@@ -54,11 +54,11 @@
             // 
             this.panelSimulador.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panelSimulador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.panelSimulador.Location = new System.Drawing.Point(12, 61);
+            this.panelSimulador.Location = new System.Drawing.Point(12, 55);
             this.panelSimulador.Name = "panelSimulador";
             this.panelSimulador.RowHeadersWidth = 51;
             this.panelSimulador.RowTemplate.Height = 24;
-            this.panelSimulador.Size = new System.Drawing.Size(1050, 700);
+            this.panelSimulador.Size = new System.Drawing.Size(1050, 722);
             this.panelSimulador.TabIndex = 4;
             this.panelSimulador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.panelSimulador_CellContentClick);
             this.panelSimulador.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSimulador_Paint);
@@ -68,9 +68,9 @@
             this.auto.BackColor = System.Drawing.Color.Green;
             this.auto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.auto.ForeColor = System.Drawing.SystemColors.Control;
-            this.auto.Location = new System.Drawing.Point(951, 23);
+            this.auto.Location = new System.Drawing.Point(931, 12);
             this.auto.Name = "auto";
-            this.auto.Size = new System.Drawing.Size(111, 33);
+            this.auto.Size = new System.Drawing.Size(131, 33);
             this.auto.TabIndex = 6;
             this.auto.Text = "▶ AUTO";
             this.auto.UseVisualStyleBackColor = false;
@@ -80,20 +80,20 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button1
+            // MostrarInfoVuelos
             // 
-            this.button1.Location = new System.Drawing.Point(12, 23);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(242, 33);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Mostrar información de los vuelos";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.MostrarInfoVuelos.Location = new System.Drawing.Point(22, 13);
+            this.MostrarInfoVuelos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MostrarInfoVuelos.Name = "MostrarInfoVuelos";
+            this.MostrarInfoVuelos.Size = new System.Drawing.Size(237, 33);
+            this.MostrarInfoVuelos.TabIndex = 7;
+            this.MostrarInfoVuelos.Text = "Mostrar información de los vuelos";
+            this.MostrarInfoVuelos.UseVisualStyleBackColor = false;
+            this.MostrarInfoVuelos.Click += new System.EventHandler(this.MostrarInfoVuelos_Click);
             // 
             // boton_prediccion_colisiones
             // 
-            this.boton_prediccion_colisiones.Location = new System.Drawing.Point(260, 23);
+            this.boton_prediccion_colisiones.Location = new System.Drawing.Point(265, 13);
             this.boton_prediccion_colisiones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.boton_prediccion_colisiones.Name = "boton_prediccion_colisiones";
             this.boton_prediccion_colisiones.Size = new System.Drawing.Size(181, 33);
@@ -108,9 +108,9 @@
             this.boton_reset.Cursor = System.Windows.Forms.Cursors.Default;
             this.boton_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boton_reset.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.boton_reset.Location = new System.Drawing.Point(717, 23);
+            this.boton_reset.Location = new System.Drawing.Point(657, 12);
             this.boton_reset.Name = "boton_reset";
-            this.boton_reset.Size = new System.Drawing.Size(111, 33);
+            this.boton_reset.Size = new System.Drawing.Size(131, 33);
             this.boton_reset.TabIndex = 9;
             this.boton_reset.Text = "RESET";
             this.boton_reset.UseVisualStyleBackColor = false;
@@ -123,7 +123,7 @@
             this.ClientSize = new System.Drawing.Size(1080, 789);
             this.Controls.Add(this.boton_reset);
             this.Controls.Add(this.boton_prediccion_colisiones);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.MostrarInfoVuelos);
             this.Controls.Add(this.auto);
             this.Controls.Add(this.mover);
             this.Controls.Add(this.panelSimulador);
@@ -141,7 +141,7 @@
         private System.Windows.Forms.DataGridView panelSimulador;
         private System.Windows.Forms.Button auto;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button MostrarInfoVuelos;
         private System.Windows.Forms.Button boton_prediccion_colisiones;
         private System.Windows.Forms.Button boton_reset;
     }

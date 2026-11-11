@@ -19,6 +19,8 @@ namespace Interfaz
 
             this.distancia = distancia;
             distanciabox.Text = Convert.ToString(distancia);
+            TemaOscuro oscuro = new TemaOscuro();
+            oscuro.AplicarTemaOscuro(this);
         }
 
         private void button1_Click(object sender, EventArgs e)

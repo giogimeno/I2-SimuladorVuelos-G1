@@ -16,7 +16,9 @@ namespace Interfaz
         int reset = -1;
         public CambiarVel()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            TemaOscuro oscuro = new TemaOscuro();
+            oscuro.AplicarTemaOscuro(this);
         }
 
 

@@ -85,7 +85,7 @@
             // 
             this.autoRellenar2.Location = new System.Drawing.Point(321, 88);
             this.autoRellenar2.Name = "autoRellenar2";
-            this.autoRellenar2.Size = new System.Drawing.Size(140, 23);
+            this.autoRellenar2.Size = new System.Drawing.Size(140, 28);
             this.autoRellenar2.TabIndex = 25;
             this.autoRellenar2.Text = "Autorellenar";
             this.autoRellenar2.UseVisualStyleBackColor = true;

@@ -28,6 +28,13 @@ namespace Interfaz
             tablainfo.Rows.Add("Posición actual Y", planvuelo.GetActualPosition().GetY());
             tablainfo.Rows.Add("Posición final X", planvuelo.GetFinalPosition().GetX());
             tablainfo.Rows.Add("Posición final Y", planvuelo.GetFinalPosition().GetY());
+            tablainfo.ReadOnly = true;                 // no se puede escribir en las celdas
+            tablainfo.AllowUserToAddRows = false;      // quita la fila vacía de abajo
+            tablainfo.AllowUserToDeleteRows = false;   // no se pueden borrar filas
+            
+            TemaOscuro oscuro = new TemaOscuro();
+            oscuro.AplicarTemaOscuro(this);
+           
         }
     }
 }

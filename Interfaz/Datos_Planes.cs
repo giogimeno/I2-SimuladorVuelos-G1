@@ -17,6 +17,8 @@ namespace Interfaz
         public Datos_Planes()
         {
             InitializeComponent();
+            TemaOscuro oscuro = new TemaOscuro();
+            oscuro.AplicarTemaOscuro(this);
         }
 
         private void button1_Click(object sender, EventArgs e)

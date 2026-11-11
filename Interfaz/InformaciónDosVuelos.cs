@@ -14,7 +14,8 @@ namespace Interfaz
     public partial class InformaciónDosVuelos : Form
     {
         FlightPlanList listaPlanes;
-        int reset;
+        int reset; 
+        
         public InformaciónDosVuelos(FlightPlanList planes)
         {
             InitializeComponent();
@@ -33,9 +34,14 @@ namespace Interfaz
                 vuelostabla.Rows[i].Cells[3].Value = planes.GetFlightPlan(i).GetFinalPosition().GetX();
                 vuelostabla.Rows[i].Cells[4].Value = planes.GetFlightPlan(i).GetFinalPosition().GetY();
                 vuelostabla.Rows[i].Cells[5].Value = planes.GetFlightPlan(i).GetVelocidad();
+                vuelostabla.ReadOnly = true;
+                vuelostabla.AllowUserToAddRows = false;
+                vuelostabla.AllowUserToDeleteRows = false;
 
                 i = i + 1;
             }
+            TemaOscuro oscuro = new TemaOscuro();
+            oscuro.AplicarTemaOscuro(this);
         }
 
         private void button1_Click(object sender, EventArgs e)

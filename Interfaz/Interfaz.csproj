@@ -66,6 +66,9 @@
     </Compile>
     <Compile Include="Dot.cs" />
     <Compile Include="DotList.cs" />
+    <Compile Include="PanelSky.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="F_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +102,7 @@
       <DependentUpon>Simulador.cs</DependentUpon>
     </Compile>
     <Compile Include="GestorDeConflictos.cs" />
+    <Compile Include="TemaOscuro.cs" />
     <EmbeddedResource Include="CambiarVel.resx">
       <DependentUpon>CambiarVel.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +132,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Simulador.resx">
       <DependentUpon>Simulador.cs</DependentUpon>

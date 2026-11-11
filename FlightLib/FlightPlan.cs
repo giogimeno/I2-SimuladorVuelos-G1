@@ -93,6 +93,13 @@ namespace FlightLib
 
         }
 
+        public bool HayColisionConElVuelo(FlightPlan secundario, double distancia_minima)
+        {
+            if (this.Distancia(secundario) < distancia_minima)
+            { return true; }
+            else
+            { return false; }
+        }
         public bool HasArrived()
         {
             double thereshold = 10;
@@ -202,6 +209,10 @@ namespace FlightLib
             return new ResultadoPrediccionColisiones(tMin, distanciaRealMinima, hayColision);
 
         }
+
+
+
+
 
     }
 }

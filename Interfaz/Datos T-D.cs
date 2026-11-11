@@ -18,6 +18,8 @@ namespace Interfaz
         public Datos_Tiempo_Distancia()
         {
             InitializeComponent();
+            TemaOscuro oscuro = new TemaOscuro();
+            oscuro.AplicarTemaOscuro(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
