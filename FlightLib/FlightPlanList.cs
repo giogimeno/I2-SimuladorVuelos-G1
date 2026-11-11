@@ -9,38 +9,31 @@ namespace FlightLib
 {
     public class FlightPlanList
     {
-        FlightPlan[] lista = new FlightPlan[100];
+        List<FlightPlan> lista = new List<FlightPlan>();
         double tiempo = 0;
         double distanciaSeguridad = 0;
-        int number = 0;
 
         public int AddFlightPlan(FlightPlan p)
         {
-            if (number <= 10)
-            {
-                lista[number] = p;
-                number++;
-                return 0;
-            }
-            else
-            { return -1; }
+            lista.Add(p);
+            return 0;
         }
 
         public FlightPlan GetFlightPlan(int i)
         {
-            if (i < 0 || i >= number)
+            if (i < 0 || i >= lista.Count)
             { return null; }
             else
             { return lista[i]; }
         }
 
         public int GetNum()
-        { return this.number; }
+        { return this.lista.Count; }
 
         public void Mover(double tiempo)
         {
             int i = 0;
-            while (i < number)
+            while (i < lista.Count)
             {
                 lista[i].Mover(tiempo);
                 i++;
@@ -70,7 +63,7 @@ namespace FlightLib
         public void EscribeConsola() 
         {
             int i = 0;
-            while (i < number)
+            while (i < lista.Count)
             {
                 lista[i].EscribeConsola();
                 i++;
@@ -150,7 +143,7 @@ namespace FlightLib
 
                 int i = 0;
 
-                while (i < number)
+                while (i < lista.Count)
                 {
                     file.WriteLine(lista[i].GetId() + "/" + lista[i].GetActualPosition().GetX() + "/" + lista[i].GetActualPosition().GetY() +
                                                  "/" + lista[i].GetFinalPosition().GetX() + "/" + lista[i].GetFinalPosition().GetY() +
@@ -167,10 +160,6 @@ namespace FlightLib
             {
                 return -1;
             }
-
         }
-
     }
-
- 
 }
