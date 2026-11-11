@@ -50,13 +50,28 @@ namespace Interfaz
 
         private void mover_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < listaPlanes.GetNum(); i++)
-            {
-                listaPlanes.GetFlightPlan(i).Mover(tiempo);
-                Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
-                listaPuntos.GetDot(i).SetPosition(pos);
-            }
+            listaPlanes.Mover(tiempo);
+            listaPuntos.ActualizarPosiciones(listaPlanes);
             panelSimulador.Invalidate();
+        }
+
+        private void Retroceder_Click(object sender, EventArgs e)
+        {
+            int res = listaPlanes.Retroceder(tiempo);
+            if (res < 0)
+            {
+                MessageBox.Show(
+                "No existen posiciones anteriores.",
+                "No se pudo retroceder",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+                );
+            }
+            else
+            {
+                listaPuntos.ActualizarPosiciones(listaPlanes);
+                panelSimulador.Invalidate();
+            }
         }
 
         private void panelSimulador_Paint(object sender, PaintEventArgs e)
@@ -104,12 +119,8 @@ namespace Interfaz
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < listaPlanes.GetNum(); i++)
-            {
-                listaPlanes.GetFlightPlan(i).Mover(tiempo);
-                Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
-                listaPuntos.GetDot(i).SetPosition(pos);
-            }
+            listaPlanes.Mover(tiempo);
+            listaPuntos.ActualizarPosiciones(listaPlanes);
             panelSimulador.Invalidate();
         }
 
@@ -135,24 +146,17 @@ namespace Interfaz
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void MostrarInfoVuelos_Click(object sender, EventArgs e)
         {
             InformaciónDosVuelos form = new InformaciónDosVuelos(listaPlanes);
             form.ShowDialog();
             form.RecibirPlanes();
             if (form.RecibirReset() == 0)
             {
-                for (int i = 0; i < listaPlanes.GetNum(); i++)
-                {
-                    listaPlanes.GetFlightPlan(i).Restart();
-                    Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
-                    listaPuntos.GetDot(i).SetPosition(pos);
-                    panelSimulador.Invalidate();
-                    panelSimulador.Refresh();
-                }
-
+                listaPlanes.Reset();
+                listaPuntos.ActualizarPosiciones(listaPlanes);
+                panelSimulador.Refresh();
             }
-
         }
 
         private void boton_prediccion_colisiones_Click(object sender, EventArgs e)
@@ -194,14 +198,9 @@ namespace Interfaz
 
         private void boton_reset_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < listaPlanes.GetNum(); i++) //Resetear toda la simulación.
-            {
-                listaPlanes.GetFlightPlan(i).Restart();
-                Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
-                listaPuntos.GetDot(i).SetPosition(pos);
-                panelSimulador.Invalidate();
-                panelSimulador.Refresh();
-            }
+            listaPlanes.Reset();
+            listaPuntos.ActualizarPosiciones(listaPlanes);
+            panelSimulador.Refresh();
         }
 
         private void panelSimulador_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -258,5 +257,7 @@ namespace Interfaz
                 MessageBox.Show("Archivo no encotrado.");
             }
         }
+
+
     }
 }

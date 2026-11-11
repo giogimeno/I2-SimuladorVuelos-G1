@@ -40,19 +40,21 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.panelSimulador)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // mover
             // 
+            this.mover.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.mover.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mover.Location = new System.Drawing.Point(834, 23);
+            this.mover.Location = new System.Drawing.Point(796, 23);
             this.mover.Name = "mover";
-            this.mover.Size = new System.Drawing.Size(111, 33);
+            this.mover.Size = new System.Drawing.Size(149, 33);
             this.mover.TabIndex = 5;
-            this.mover.Text = "MOVER";
-            this.mover.UseVisualStyleBackColor = true;
+            this.mover.Text = "AVANZAR";
+            this.mover.UseVisualStyleBackColor = false;
             this.mover.Click += new System.EventHandler(this.mover_Click);
             // 
             // panelSimulador
@@ -94,7 +96,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Mostrar información de los vuelos";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.MostrarInfoVuelos_Click);
             // 
             // boton_prediccion_colisiones
             // 
@@ -113,7 +115,7 @@
             this.boton_reset.Cursor = System.Windows.Forms.Cursors.Default;
             this.boton_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boton_reset.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.boton_reset.Location = new System.Drawing.Point(717, 23);
+            this.boton_reset.Location = new System.Drawing.Point(513, 23);
             this.boton_reset.Name = "boton_reset";
             this.boton_reset.Size = new System.Drawing.Size(111, 33);
             this.boton_reset.TabIndex = 9;
@@ -155,11 +157,24 @@
             this.cargarPlanesToolStripMenuItem.Text = "Cargar Planes";
             this.cargarPlanesToolStripMenuItem.Click += new System.EventHandler(this.cargarPlanesToolStripMenuItem_Click);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(630, 23);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(160, 33);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "RETROCEDER";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.Retroceder_Click);
+            // 
             // Simulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 789);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.boton_reset);
             this.Controls.Add(this.boton_prediccion_colisiones);
             this.Controls.Add(this.button1);
@@ -191,5 +206,6 @@
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem guardarPlanesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargarPlanesToolStripMenuItem;
+        private System.Windows.Forms.Button button2;
     }
 }

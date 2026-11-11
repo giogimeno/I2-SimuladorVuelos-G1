@@ -20,5 +20,13 @@ namespace Interfaz
         public int GetNum()
         { return this.listaPuntos.Count; }
 
+        public void ActualizarPosiciones(FlightPlanList listaPlanes)
+        {
+            for (int i = 0; i < listaPlanes.GetNum(); i++)
+            {
+                Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
+                listaPuntos[i].SetPosition(pos);
+            }
+        }
     }
 }
