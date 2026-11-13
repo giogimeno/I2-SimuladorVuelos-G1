@@ -49,9 +49,9 @@
             // 
             this.mover.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.mover.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mover.Location = new System.Drawing.Point(796, 23);
+            this.mover.Location = new System.Drawing.Point(752, 30);
             this.mover.Name = "mover";
-            this.mover.Size = new System.Drawing.Size(149, 33);
+            this.mover.Size = new System.Drawing.Size(145, 31);
             this.mover.TabIndex = 5;
             this.mover.Text = "AVANZAR";
             this.mover.UseVisualStyleBackColor = false;
@@ -61,11 +61,11 @@
             // 
             this.panelSimulador.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panelSimulador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.panelSimulador.Location = new System.Drawing.Point(12, 55);
+            this.panelSimulador.Location = new System.Drawing.Point(12, 68);
             this.panelSimulador.Name = "panelSimulador";
             this.panelSimulador.RowHeadersWidth = 51;
             this.panelSimulador.RowTemplate.Height = 24;
-            this.panelSimulador.Size = new System.Drawing.Size(1050, 722);
+            this.panelSimulador.Size = new System.Drawing.Size(1155, 709);
             this.panelSimulador.TabIndex = 4;
             this.panelSimulador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.panelSimulador_CellContentClick);
             this.panelSimulador.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSimulador_Paint);
@@ -75,9 +75,9 @@
             this.auto.BackColor = System.Drawing.Color.Green;
             this.auto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.auto.ForeColor = System.Drawing.SystemColors.Control;
-            this.auto.Location = new System.Drawing.Point(931, 12);
+            this.auto.Location = new System.Drawing.Point(1034, 29);
             this.auto.Name = "auto";
-            this.auto.Size = new System.Drawing.Size(131, 33);
+            this.auto.Size = new System.Drawing.Size(133, 31);
             this.auto.TabIndex = 6;
             this.auto.Text = "▶ AUTO";
             this.auto.UseVisualStyleBackColor = false;
@@ -89,7 +89,7 @@
             // 
             // MostrarInfoVuelos
             // 
-            this.MostrarInfoVuelos.Location = new System.Drawing.Point(22, 13);
+            this.MostrarInfoVuelos.Location = new System.Drawing.Point(17, 30);
             this.MostrarInfoVuelos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MostrarInfoVuelos.Name = "MostrarInfoVuelos";
             this.MostrarInfoVuelos.Size = new System.Drawing.Size(237, 33);
@@ -100,10 +100,10 @@
             // 
             // boton_prediccion_colisiones
             // 
-            this.boton_prediccion_colisiones.Location = new System.Drawing.Point(260, 27);
+            this.boton_prediccion_colisiones.Location = new System.Drawing.Point(260, 30);
             this.boton_prediccion_colisiones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.boton_prediccion_colisiones.Name = "boton_prediccion_colisiones";
-            this.boton_prediccion_colisiones.Size = new System.Drawing.Size(175, 27);
+            this.boton_prediccion_colisiones.Size = new System.Drawing.Size(185, 33);
             this.boton_prediccion_colisiones.TabIndex = 8;
             this.boton_prediccion_colisiones.Text = "Predicción de Colisiones";
             this.boton_prediccion_colisiones.UseVisualStyleBackColor = true;
@@ -115,9 +115,9 @@
             this.boton_reset.Cursor = System.Windows.Forms.Cursors.Default;
             this.boton_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boton_reset.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.boton_reset.Location = new System.Drawing.Point(657, 12);
+            this.boton_reset.Location = new System.Drawing.Point(903, 29);
             this.boton_reset.Name = "boton_reset";
-            this.boton_reset.Size = new System.Drawing.Size(131, 33);
+            this.boton_reset.Size = new System.Drawing.Size(125, 31);
             this.boton_reset.TabIndex = 9;
             this.boton_reset.Text = "RESET";
             this.boton_reset.UseVisualStyleBackColor = false;
@@ -130,7 +130,7 @@
             this.archivoToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1080, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(1192, 28);
             this.menuStrip2.TabIndex = 11;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -148,32 +148,29 @@
             this.guardarPlanesToolStripMenuItem.Name = "guardarPlanesToolStripMenuItem";
             this.guardarPlanesToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
             this.guardarPlanesToolStripMenuItem.Text = "Guardar planes";
-            this.guardarPlanesToolStripMenuItem.Click += new System.EventHandler(this.guardarPlanesToolStripMenuItem_Click);
             // 
             // cargarPlanesToolStripMenuItem
             // 
             this.cargarPlanesToolStripMenuItem.Name = "cargarPlanesToolStripMenuItem";
             this.cargarPlanesToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
             this.cargarPlanesToolStripMenuItem.Text = "Cargar Planes";
-            this.cargarPlanesToolStripMenuItem.Click += new System.EventHandler(this.cargarPlanesToolStripMenuItem_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(630, 23);
+            this.button2.Location = new System.Drawing.Point(576, 29);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 33);
+            this.button2.Size = new System.Drawing.Size(170, 32);
             this.button2.TabIndex = 12;
             this.button2.Text = "RETROCEDER";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.Retroceder_Click);
             // 
             // Simulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 789);
+            this.ClientSize = new System.Drawing.Size(1192, 789);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.boton_reset);
             this.Controls.Add(this.boton_prediccion_colisiones);

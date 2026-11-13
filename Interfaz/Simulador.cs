@@ -352,6 +352,11 @@ namespace Interfaz
             {
                 labelAlarma.Text = "¡¡ ALERTA !! COLISIÓN:" + parejas;
                 labelAlarma.Visible = true;
+            }
+            else
+            {
+                // si ya no hay ninguna pareja en colisón, oculatamos la alerta
+                labelAlarma.Visible = false;
 
             }
         }

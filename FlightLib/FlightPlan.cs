@@ -80,20 +80,31 @@ namespace FlightLib
             //Calculamos la distancia recorrida en el tiempo dado
             double distancia = tiempo * this.velocidad / 60;
 
-            if (distancia != 0)
+            //Calculamos la distancia restante hasta posición final
+            double dX = this.finalPosition.GetX() - this.currentPosition.GetX();
+            double dY = this.finalPosition.GetY() - this.currentPosition.GetY();
+            double distanciaRestante = Math.Sqrt(dX * dX + dY * dY);
+
+            if (distanciaRestante == 0)
+            {
+                return; // Ya estamos en la posición final, no hacemos nada
+            }
+            if (distancia >= distanciaRestante)
+            {
+                //Si en este paso llegaría o se pasaría del final lo colocamos exactamente en el final 
+                currentPosition = new Position(finalPosition.GetX(), finalPosition.GetY());
+            }
+            else
             {
                 //Calculamos las razones trigonométricas
-                double hipotenusa = Math.Sqrt((finalPosition.GetX() - currentPosition.GetX()) * (finalPosition.GetX() - currentPosition.GetX()) + (finalPosition.GetY() - currentPosition.GetY()) * (finalPosition.GetY() - currentPosition.GetY()));
-                double coseno = (finalPosition.GetX() - currentPosition.GetX()) / hipotenusa;
-                double seno = (finalPosition.GetY() - currentPosition.GetY()) / hipotenusa;
+                double coseno = dX / distanciaRestante;
+                double seno = dY / distanciaRestante;
 
-                //Caculamos la nueva posición del vuelo
-                double x = currentPosition.GetX() + distancia * coseno;
-                double y = currentPosition.GetY() + distancia * seno;
-
+                //Calculamos la nueva posición del vuelo
+                double x = this.currentPosition.GetX() + coseno * distancia;
+                double y = this.currentPosition.GetY() + seno * distancia;
                 currentPosition = new Position(x, y);
             }
-
         }
 
         public bool HayColisionConElVuelo(FlightPlan secundario, double distancia_minima)
