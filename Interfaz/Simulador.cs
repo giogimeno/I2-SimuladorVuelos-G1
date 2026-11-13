@@ -18,7 +18,7 @@ namespace Interfaz
     {
         FlightPlanList listaPlanes = new FlightPlanList();
         DotList listaPuntos = new DotList();
-        
+
         Label labelAlarma = new Label();
         double tiempo;
         double distancia;
@@ -43,8 +43,8 @@ namespace Interfaz
                                 new PointF(-4, -3), new PointF(-9, -2), new PointF(-12, -6), new PointF(-14, -6),
                                 new PointF(-12, 0), new PointF(-14, 6), new PointF(-12, 6), new PointF(-9, 2),
                                 new PointF(-4, 3), new PointF(-6, 14), new PointF(-2, 14), new PointF(4, 3) };
-        
-        
+
+
         public Simulador()
         {
             InitializeComponent();
@@ -62,11 +62,11 @@ namespace Interfaz
             labelAlarma.Font = new Font("Arial", 16, FontStyle.Bold);
             labelAlarma.Padding = new Padding(8);
             labelAlarma.Location = new Point(250, 10);
-            labelAlarma.Visible = false;               
-            panelSimulador.Controls.Add(labelAlarma);  
+            labelAlarma.Visible = false;
+            panelSimulador.Controls.Add(labelAlarma);
         }
         public void DarPlanes(FlightPlanList listaPlanes)
-        { 
+        {
             this.listaPlanes = listaPlanes;
             this.tiempo = listaPlanes.GetTiempo();
             this.distancia = listaPlanes.GetDistanciaSeguridad();
@@ -187,7 +187,7 @@ namespace Interfaz
                                   Convert.ToInt32(plan.GetFinalPosition().GetX()),
                                   Convert.ToInt32(plan.GetFinalPosition().GetY()));
 
-                
+
                 bool enConflicto = false;
                 int j = 0;
                 while (j < listaPlanes.GetNum())
@@ -197,11 +197,11 @@ namespace Interfaz
                     j++;
                 }
 
-                
+
                 if (enConflicto)
                 {
-                    g.FillEllipse(brushSombraNaranja, x_centro, y_centro, diametro, diametro);   
-                    g.DrawEllipse(PenCirculoROJO, x_centro, y_centro, diametro, diametro);  
+                    g.FillEllipse(brushSombraNaranja, x_centro, y_centro, diametro, diametro);
+                    g.DrawEllipse(PenCirculoROJO, x_centro, y_centro, diametro, diametro);
                 }
                 else
                 {
@@ -353,5 +353,7 @@ namespace Interfaz
                 labelAlarma.Text = "¡¡ ALERTA !! COLISIÓN:" + parejas;
                 labelAlarma.Visible = true;
 
+            }
+        }
     }
 }
