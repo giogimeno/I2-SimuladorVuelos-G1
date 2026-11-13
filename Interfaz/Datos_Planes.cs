@@ -1,13 +1,14 @@
-﻿using System;
+﻿using FlightLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FlightLib;
 
 namespace Interfaz
 {
@@ -96,6 +97,37 @@ namespace Interfaz
         private void Datos_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog selector = new OpenFileDialog();
+            selector.Filter = "Archivos de texto (*.txt)|*.txt";
+
+            int i = 1;
+
+            if (selector.ShowDialog() == DialogResult.OK)
+            {
+
+                i = listaPlanes.CargarArchivo(selector.FileName);
+
+            }
+
+            if (i == 0)
+            {
+                MessageBox.Show("Planes cargados correctamente.");
+                Close();
+            }
+
+            else if (i == -1)
+            {
+                MessageBox.Show("Error con el formato del archivo");
+            }
+
+            else if (i == -2)
+            {
+                MessageBox.Show("Archivo no encotrado.");
+            }
         }
     }
 }

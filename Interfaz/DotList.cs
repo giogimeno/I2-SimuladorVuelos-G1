@@ -9,23 +9,24 @@ namespace Interfaz
 {
     internal class DotList
     {
-        Dot[] listaPuntos = new Dot[1000];
-        int num = 0;
+        List<Dot> listaPuntos = new List<Dot>();
 
         public void AddDot(Dot dot)
-        {
-            this.listaPuntos[this.num] = dot; this.num++; 
-        }
+        { this.listaPuntos.Add(dot); }
 
         public Dot GetDot(int i)
-        {
-            return this.listaPuntos[i]; 
-        }
+        { return this.listaPuntos[i]; }
 
         public int GetNum()
-        { 
-            return this.num; 
-        }
+        { return this.listaPuntos.Count; }
 
+        public void ActualizarPosiciones(FlightPlanList listaPlanes)
+        {
+            for (int i = 0; i < listaPlanes.GetNum(); i++)
+            {
+                Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
+                listaPuntos[i].SetPosition(pos);
+            }
+        }
     }
 }

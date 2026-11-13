@@ -51,6 +51,7 @@
             this.plan2XInicio = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.autoRelleno = new System.Windows.Forms.Button();
+            this.cargarArchivoButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -248,11 +249,22 @@
             this.autoRelleno.UseVisualStyleBackColor = true;
             this.autoRelleno.Click += new System.EventHandler(this.autoRelleno_Click);
             // 
+            // cargarArchivoButton
+            // 
+            this.cargarArchivoButton.Location = new System.Drawing.Point(35, 343);
+            this.cargarArchivoButton.Name = "cargarArchivoButton";
+            this.cargarArchivoButton.Size = new System.Drawing.Size(169, 30);
+            this.cargarArchivoButton.TabIndex = 0;
+            this.cargarArchivoButton.Text = "Cargar Archivo";
+            this.cargarArchivoButton.UseVisualStyleBackColor = true;
+            this.cargarArchivoButton.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Datos_Planes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(471, 450);
+            this.Controls.Add(this.cargarArchivoButton);
             this.Controls.Add(this.autoRelleno);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label8);
@@ -309,5 +321,6 @@
         private System.Windows.Forms.TextBox plan2XInicio;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button autoRelleno;
+        private System.Windows.Forms.Button cargarArchivoButton;
     }
 }

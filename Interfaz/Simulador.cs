@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace Interfaz
 {
     public partial class Simulador : Form
     {
-        FlightPlanList listaPlanes;
+        FlightPlanList listaPlanes = new FlightPlanList();
         DotList listaPuntos = new DotList();
         
         Label labelAlarma = new Label();
@@ -65,14 +66,11 @@ namespace Interfaz
             panelSimulador.Controls.Add(labelAlarma);  
         }
         public void DarPlanes(FlightPlanList listaPlanes)
-        { this.listaPlanes = listaPlanes; }
-
-        public void DarTiempo(double tiempo)
-        { this.tiempo = tiempo; }
-
-        public void DarDistancia(double distancia)
-        { this.distancia = distancia; }
-
+        { 
+            this.listaPlanes = listaPlanes;
+            this.tiempo = listaPlanes.GetTiempo();
+            this.distancia = listaPlanes.GetDistanciaSeguridad();
+        }
         private void Simulador_Load(object sender, EventArgs e)
         {
             int i = 0;
@@ -240,7 +238,6 @@ namespace Interfaz
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            pasos++;
             for (int i = 0; i < listaPlanes.GetNum(); i++)
             {
                 listaPlanes.GetFlightPlan(i).Mover(tiempo);
@@ -281,17 +278,10 @@ namespace Interfaz
             form.RecibirPlanes();
             if (form.RecibirReset() == 0)
             {
-                for (int i = 0; i < listaPlanes.GetNum(); i++) //Resetear toda la simulación.
-                {
-                    listaPlanes.GetFlightPlan(i).Restart();
-                    Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
-                    listaPuntos.GetDot(i).SetPosition(pos);
-                    panelSimulador.Invalidate();
-                    panelSimulador.Refresh();
-                }
-
+                listaPlanes.Reset();
+                listaPuntos.ActualizarPosiciones(listaPlanes);
+                panelSimulador.Refresh();
             }
-
         }
 
         private void boton_prediccion_colisiones_Click(object sender, EventArgs e)
@@ -326,21 +316,16 @@ namespace Interfaz
             }
             else
             {
-                GestorDeConflictos gestor = new GestorDeConflictos(listaPlanes, distancia);
+                GestorDeConflictos gestor = new GestorDeConflictos(listaPlanes);
                 gestor.GestionarConflictos();
             }
         }
 
         private void boton_reset_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < listaPlanes.GetNum(); i++) //Resetear toda la simulación.
-            {
-                listaPlanes.GetFlightPlan(i).Restart();
-                Position pos = listaPlanes.GetFlightPlan(i).GetActualPosition();
-                listaPuntos.GetDot(i).SetPosition(pos);
-                panelSimulador.Invalidate();
-                panelSimulador.Refresh();
-            }
+            listaPlanes.Reset();
+            listaPuntos.ActualizarPosiciones(listaPlanes);
+            panelSimulador.Refresh();
         }
 
         private void panelSimulador_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -368,16 +353,5 @@ namespace Interfaz
                 labelAlarma.Text = "¡¡ ALERTA !! COLISIÓN:" + parejas;
                 labelAlarma.Visible = true;
 
-                //// parar automático
-                //timer1.Stop();
-                //auto.Text = "▶ AUTO";
-                //auto.BackColor = Color.Green;
-                //moverParar = 0;
-            }
-            else
-            {
-                labelAlarma.Visible = false;   // si ya no hay conflicto, se quita el cartel
-            }
-        }
     }
 }

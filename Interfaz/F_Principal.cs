@@ -14,8 +14,6 @@ namespace Interfaz
     public partial class Form_Principal : Form
     {
         FlightPlanList listaPlanes = new FlightPlanList();
-        double distancia;
-        double tiempo;
 
         public Form_Principal()
         { 
@@ -82,7 +80,14 @@ namespace Interfaz
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        { }
+        {
+            Identificacion form = new Identificacion();
+            form.ShowDialog();
+            if (form.GetResult() != 0)
+            {
+                Close();
+            }
+        }
 
         private void añadirDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -95,21 +100,30 @@ namespace Interfaz
         {
             Datos_Tiempo_Distancia form = new Datos_Tiempo_Distancia();
             form.ShowDialog();
-            distancia = form.DameDistancia();
-            tiempo = form.DameTiempo();
+            listaPlanes.SetDistanciaSeguridad(form.DameDistancia());
+            listaPlanes.SetTiempo(form.DameTiempo());
         }
 
         private void iniciarSimulaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            GestorDeConflictos gestor = new GestorDeConflictos(listaPlanes, distancia);
+            GestorDeConflictos gestor = new GestorDeConflictos(listaPlanes);
             gestor.GestionarConflictos();
 
             Simulador form = new Simulador();
-            form.DarDistancia(distancia);
-            form.DarTiempo(tiempo);
             form.DarPlanes(listaPlanes);
             form.ShowDialog();
+        }
+
+        public void ReiniciarSimulador()
+        {
+            GestorDeConflictos gestor = new GestorDeConflictos(listaPlanes);
+            gestor.GestionarConflictos();
+
+            Simulador form = new Simulador();
+            form.DarPlanes(listaPlanes);
+            form.ShowDialog();
+
         }
     }
 }
